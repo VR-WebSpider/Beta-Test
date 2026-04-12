@@ -1269,10 +1269,11 @@ function buildQR() {
   const items = [
     { title:'WebSpider Studios Community', desc:CONFIG.community.desc, link:CONFIG.community.inviteLink, rules:CONFIG.community.rules },
   ];
-  if(currentGame?.whatsappGroup) {
-    items.push({ title:currentGame.groupName, desc:`Official beta testers group for ${currentGame.name}. Get APK links, bug report channels &amp; dev announcements.`, link:currentGame.whatsappGroup, rules:currentGame?.groupRules||[] });
+  const game = currentGame || CONFIG.games[0];
+  if(game && game.whatsappGroup) {
+    items.push({ title:game.groupName, desc:`Official beta testers group for ${game.name}. Get APK links, bug report channels &amp; dev announcements.`, link:game.whatsappGroup, rules:game.groupRules||[] });
   } else {
-    items.push({ title: currentGame?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we\'ll send it to your WhatsApp!', link: null, rules: currentGame?.groupRules||[] });
+    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we\'ll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
   }
   grid.innerHTML = '';
   items.forEach(item=>{
