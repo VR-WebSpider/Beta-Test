@@ -774,12 +774,14 @@
         <div class="success-emoji">🎉</div>
         <h2 class="section-title" style="margin-bottom:12px">You're in the Beta Squad!</h2>
         <p style="color:rgba(255,255,255,0.9);max-width:500px;margin:0 auto 32px;font-size:16px;line-height:1.7">
-          Your application is received! 🎮 We'll send your Google Play invite link within 24-48 hrs.
-          Join our WhatsApp group below to get instant updates.
+          Your application is received! 🎮 Click the button below to get your instant download link via WhatsApp, or check your email!
         </p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href="#community" class="btn-primary">💬 Join WhatsApp Group</a>
-          <button class="btn-outline" onclick="shareSignup()">📤 Share on WhatsApp</button>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;flex-direction:column;align-items:center;">
+          <button class="btn-primary" onclick="getInstantWhatsAppLink()" style="background:#25D366;color:#ffffff;font-size:16px;padding:16px 32px;box-shadow:0 8px 24px rgba(37,211,102,.4);border:2px solid #ffffff;">📲 Get Download Link on WhatsApp</button>
+          <div style="display:flex;gap:14px;margin-top:10px;">
+            <a href="#community" class="btn-outline">💬 Community</a>
+            <button class="btn-outline" onclick="shareSignup()">📤 Share Form</button>
+          </div>
         </div>
       </div>
     </div><!-- /panel-signup -->
@@ -930,6 +932,7 @@
 ═══════════════════════════════════════════════════════ */
 const CONFIG = {
   studio: 'WebSpider Studios',
+  developerWhatsApp: '', // IMPORTANT: Paste your WhatsApp Business number here WITH country code, no + or spaces (e.g. '919876543210'). This auto-delivers the app link!
   sheetsEndpointSignup:   'YOUR_GOOGLE_APPS_SCRIPT_SIGNUP_URL',
   sheetsEndpointFeedback: 'YOUR_GOOGLE_APPS_SCRIPT_FEEDBACK_URL',
 
@@ -1308,6 +1311,20 @@ function copyLink(link, btnId) {
   });
 }
 
+/* ═══════════════════════════════════════════════════
+   INSTANT WHATSAPP LINK (AUTO-REPLY TRICK)
+═══════════════════════════════════════════════════ */
+function getInstantWhatsAppLink() {
+  const number = CONFIG.developerWhatsApp || '';
+  if (!number) {
+    showToast('⚠️ Developer WhatsApp number not configured yet.');
+    return;
+  }
+  const gameName = currentGame?.name || 'your game';
+  const text = `Hi WebSpider Studios! 🕷️ I just registered for the ${gameName} Beta. Can I get the download link please?`;
+  const url = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+}
 /* ═══════════════════════════════════════════════════
    SHARE
 ═══════════════════════════════════════════════════ */
