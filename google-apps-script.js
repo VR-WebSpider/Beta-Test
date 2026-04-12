@@ -76,9 +76,8 @@ function sendWelcomeEmail(email, name) {
   const firstName = name ? name.split(' ')[0] : 'Tester';
   const subject = '🎉 Your Aqua Sort Beta Access is Here!';
   
-  // Update these links with your actual URLs
   const playStoreLink = 'https://play.google.com/apps/testing/com.webspiderstudios.aquasort';
-  const whatsappLink = 'YOUR_WHATSAPP_GROUP_LINK';
+  const whatsappLink = 'https://chat.whatsapp.com/ImE2kPTV4JUAvm3D3YNADp';
   
   const htmlBody = `
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; color: #334155;">
