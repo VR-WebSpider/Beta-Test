@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebSpider Studios - Beta Hub</title>
+  <title>WebSpider Studios — Beta Hub</title>
   <link rel="icon" type="image/png" href="./studio_logo_white.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <meta name="description" content="Join beta testing for WebSpider Studios games. Get early access, exclusive rewards, and shape the future of indie gaming." />
@@ -11,14 +11,14 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vr-webspider.github.io/Beta-Test/" />
-  <meta property="og:title" content="WebSpider Studios - Beta Hub" />
+  <meta property="og:title" content="WebSpider Studios — Beta Hub" />
   <meta property="og:description" content="Join the beta squad! Get early access to premium mobile games like Aqua Sort." />
   <meta property="og:image" content="https://github.com/VR-WebSpider/Beta-Test/raw/main/studio_logo_white.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://vr-webspider.github.io/Beta-Test/" />
-  <meta property="twitter:title" content="WebSpider Studios - Beta Hub" />
+  <meta property="twitter:title" content="WebSpider Studios — Beta Hub" />
   <meta property="twitter:description" content="Join the beta squad! Get early access to premium mobile games like Aqua Sort." />
   <meta property="twitter:image" content="https://github.com/VR-WebSpider/Beta-Test/raw/main/studio_logo_white.png" />
   
@@ -28,7 +28,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    /* --- Design Tokens --------------------------------------- */
+    /* ─── Design Tokens ─────────────────────────────────────── */
     :root {
       --brand-primary: #34A853; /* Vibrant Green */
       --brand-dark:    #202124; /* Deep Charcoal Black */
@@ -61,11 +61,11 @@
     }
     h1,h2,h3,.brand-font { font-family: 'Righteous', sans-serif; }
 
-    /* --- Animated Background --------------------------------- */
+    /* ─── Animated Background ───────────────────────────────── */
     #bg-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
     .page-wrap { position:relative; z-index:1; }
 
-    /* --- Header ---------------------------------------------- */
+    /* ─── Header ────────────────────────────────────────────── */
     header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(255, 255, 255, 0.12); box-shadow: 0 4px 30px rgba(0,0,0,0.1); text-shadow: 0 1px 4px rgba(0,0,0,0.2);
@@ -107,7 +107,7 @@
     .nav-cta:hover { background: var(--cyan-glow) !important; transform:scale(1.03); }
     .hamburger { display:none; background:none; border:none; cursor:pointer; color:#ffffff; font-size:22px; }
 
-    /* --- Hero ------------------------------------------------ */
+    /* ─── Hero ──────────────────────────────────────────────── */
     #hero {
       min-height: 100vh; display:flex; align-items:center; justify-content:center;
       text-align:center; padding: 80px 24px 60px;
@@ -217,7 +217,7 @@
     .stat-num { font-family:'Righteous',sans-serif; font-size:32px; color:#ffffff; }
     .stat-label { font-size:12px; color:rgba(255,255,255,0.9); text-transform:uppercase; letter-spacing:1.5px; }
 
-    /* --- Section Shared -------------------------------------- */
+    /* ─── Section Shared ────────────────────────────────────── */
     section { padding:80px 24px; }
     .container { max-width:1200px; margin:0 auto; }
     .section-tag { font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
@@ -227,7 +227,7 @@
     .section-sub { color:rgba(255,255,255,0.9); font-size:16px; max-width:600px; line-height:1.7; margin-bottom:48px; }
     hr.cyan-line { border:none; border-top:1px solid var(--cyan-border); margin:60px 0; }
 
-    /* --- Games Grid ------------------------------------------ */
+    /* ─── Games Grid ────────────────────────────────────────── */
     #games { background:var(--brand-primary-mid); }
     .games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; }
     .game-card {
@@ -262,7 +262,7 @@
     }
     .game-coming .plus { font-size:32px; opacity:.4; }
 
-    /* --- Game Detail / Forms --------------------------------- */
+    /* ─── Game Detail / Forms ───────────────────────────────── */
     #game-detail { padding:80px 24px; display:none; }
     #game-detail.visible { display:block; }
     .detail-header { display:flex; align-items:center; gap:20px; margin-bottom:48px; flex-wrap:wrap; }
@@ -394,7 +394,7 @@
     .r-star.lit { filter:none; }
     .r-star:hover { transform:scale(1.1); }
 
-    /* --- QR + Links ------------------------------------------- */
+    /* ─── QR + Links ─────────────────────────────────────────── */
     #community { background:var(--brand-primary-mid); padding:80px 24px; }
     .qr-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:32px; }
     .qr-card {
@@ -425,7 +425,7 @@
     .copy-link-btn:hover { background:var(--cyan); color:var(--brand-primary); }
     .copy-link-btn.copied { background:var(--green); border-color:var(--green); color:#fff; }
 
-    /* --- About Developer ------------------------------------- */
+    /* ─── About Developer ───────────────────────────────────── */
     #about { padding:80px 24px; }
     .about-inner {
       display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start;
@@ -452,14 +452,14 @@
       transform:translateY(-2px); }
     .soc-btn svg,.soc-btn span.icon { font-size:15px; }
 
-    /* --- Footer ---------------------------------------------- */
+    /* ─── Footer ────────────────────────────────────────────── */
     footer {
       background:var(--brand-primary-mid); border-top:1px solid var(--cyan-border);
       padding:40px 24px;
     }
     .footer-inner {
-      max-width:1200px; margin: 0 auto;
-      display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center;
+      max-width:1200px; margin:0 auto;
+      display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center;
     }
     .footer-brand { font-family:'Righteous',sans-serif; font-size:20px; color:#ffffff; }
     .footer-links { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
@@ -475,7 +475,7 @@
     }
     .fsoc:hover { background:var(--cyan-dim); border-color:#ffffff; transform:translateY(-2px); }
 
-    /* --- Toast ----------------------------------------------- */
+    /* ─── Toast ─────────────────────────────────────────────── */
     .toast {
       position:fixed; bottom:30px; right:30px; z-index:9998;
       background:var(--brand-primary-card); border:1px solid var(--cyan-border);
@@ -486,7 +486,7 @@
     }
     .toast.show { transform:translateY(0); opacity:1; }
 
-    /* --- Mobile ---------------------------------------------- */
+    /* ─── Mobile ────────────────────────────────────────────── */
     @media(max-width:768px) {
       nav { display:none; }
       nav.open { display:flex; flex-direction:column; position:fixed; inset:0; top:64px;
@@ -500,7 +500,7 @@
       .hero-tubes .h-tube { width:22px; }
     }
   
-    /* --- Social Cards ---------------------------------------- */
+    /* ─── Social Cards ──────────────────────────────────────── */
     .social-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:16px; margin-top:24px; }
     .social-card {
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -522,7 +522,7 @@
     .fsoc { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:white; font-size:18px; transition:0.2s; }
     .fsoc:hover { transform:scale(1.15); filter:brightness(1.2); }
 
-    /* --- Floating WhatsApp Widget ----------------------------- */
+    /* ─── Floating WhatsApp Widget ───────────────────────────── */
     .wa-float-btn {
       position: fixed;
       bottom: 30px;
@@ -544,6 +544,12 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
+    }
+    .wa-float-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(37, 211, 102, 0.25);
+      border-color: rgba(37, 211, 102, 0.8);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.3);
     }
     .wa-icon-circle {
       width: 44px;
@@ -588,7 +594,7 @@
 
 <div class="page-wrap">
 
-<!-- --- HEADER ----------------------------------------------- -->
+<!-- ─── HEADER ─────────────────────────────────────────────── -->
 <header>
   <div class="header-inner">
     <a href="#hero" class="studio-logo">
@@ -602,13 +608,13 @@
       <a href="#games">Games</a>
       <a href="#community">Community</a>
       <a href="#about">About</a>
-      <a href="#game-detail" class="nav-cta" onclick="openFirstGame()">Join Beta -></a>
+      <a href="#game-detail" class="nav-cta" onclick="openFirstGame()">Join Beta →</a>
     </nav>
     <button class="hamburger" id="ham-btn" onclick="toggleNav()" aria-label="Menu">☰</button>
   </div>
 </header>
 
-<!-- --- HERO ------------------------------------------------ -->
+<!-- ─── HERO ──────────────────────────────────────────────── -->
 <section id="hero">
   <div style="text-align:center;max-width:800px;margin:0 auto;">
     <div class="hero-badge"><span class="pulse-dot"></span> Beta Recruitment Open</div>
@@ -672,7 +678,7 @@
   </div>
 </section>
 
-<!-- --- GAMES GRID ------------------------------------------- -->
+<!-- ─── GAMES GRID ─────────────────────────────────────────── -->
 <section id="games">
   <div class="container">
     <p class="section-tag">🎮 Active Beta Programs</p>
@@ -685,7 +691,7 @@
   </div>
 </section>
 
-<!-- --- GAME DETAIL ------------------------------------------ -->
+<!-- ─── GAME DETAIL ────────────────────────────────────────── -->
 <section id="game-detail">
   <div class="container">
 
@@ -717,7 +723,7 @@
           <div class="step-label" id="sl-4">Rate</div>
         </div>
 
-        <!-- Step 1 - Identity -->
+        <!-- Step 1 — Identity -->
         <div class="step-content active" id="step-1">
           <div class="step-title">👋 Who are you?</div>
           <div class="step-sub">Let us know who's joining the beta squad!</div>
@@ -771,11 +777,11 @@
           </div>
           <div class="form-nav">
             <div></div>
-            <button class="btn-next" onclick="nextStep(1)">Next: Device -></button>
+            <button class="btn-next" onclick="nextStep(1)">Next: Device →</button>
           </div>
         </div>
 
-        <!-- Step 2 - Device -->
+        <!-- Step 2 — Device -->
         <div class="step-content" id="step-2">
           <div class="step-title">📱 Your Device</div>
           <div class="step-sub">Help us know what hardware you're testing on.</div>
@@ -804,12 +810,12 @@
             </div>
           </div>
           <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(2)"><- Back</button>
-            <button class="btn-next" onclick="nextStep(2)">Next: Play Style -></button>
+            <button class="btn-back" onclick="prevStep(2)">← Back</button>
+            <button class="btn-next" onclick="nextStep(2)">Next: Play Style →</button>
           </div>
         </div>
 
-        <!-- Step 3 - Play style -->
+        <!-- Step 3 — Play style -->
         <div class="step-content" id="step-3">
           <div class="step-title">🎯 Play Commitment</div>
           <div class="step-sub">How much time can you dedicate to testing each week?</div>
@@ -831,17 +837,17 @@
             <textarea class="field-input" id="f-motivation" rows="3" placeholder="Tell us why you'd be a great tester..."></textarea>
           </div>
           <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(3)"><- Back</button>
-            <button class="btn-next" onclick="nextStep(3)">Almost There -></button>
+            <button class="btn-back" onclick="prevStep(3)">← Back</button>
+            <button class="btn-next" onclick="nextStep(3)">Almost There →</button>
           </div>
         </div>
 
-        <!-- Step 4 - Rate -->
+        <!-- Step 4 — Rate -->
         <div class="step-content" id="step-4">
           <div class="step-title">⭐ One Last Thing!</div>
-          <div class="step-sub">Almost done - just rate your excitement level!</div>
+          <div class="step-sub">Almost done — just rate your excitement level!</div>
           <div class="field-group">
-            <label class="field-label">Excitement Level (1-5 stars)</label>
+            <label class="field-label">Excitement Level (1–5 stars)</label>
             <div class="star-group" id="star-group">
               <span class="star" data-v="1" onclick="rateStar(1)">⭐</span>
               <span class="star" data-v="2" onclick="rateStar(2)">⭐</span>
@@ -855,7 +861,7 @@
             <textarea class="field-input" id="f-suggestions" rows="3" placeholder="Anything you'd love to see in the game..."></textarea>
           </div>
           <div class="form-nav">
-            <button class="btn-back" onclick="prevStep(4)"><- Back</button>
+            <button class="btn-back" onclick="prevStep(4)">← Back</button>
             <button class="btn-next" id="submit-btn" onclick="submitSignup()">🚀 Submit Application!</button>
           </div>
         </div>
@@ -946,31 +952,32 @@
   </div>
 </section>
 
-<!-- --- COMMUNITY -------------------------------------------- -->
+<!-- ─── COMMUNITY ──────────────────────────────────────────── -->
 <section id="community">
   <div class="container">
     <p class="section-tag">💬 WhatsApp Community</p>
     <h2 class="section-title">Join the Tribe</h2>
     <p class="section-sub section-sub--community">Scan the QR code or tap the link to join our official WhatsApp community and game-specific tester groups.</p>
+
     <div class="qr-grid" id="qr-grid">
       <!-- Populated by JS -->
     </div>
   </div>
 </section>
 
-<!-- --- ABOUT DEVELOPER -------------------------------------- -->
+<!-- ─── ABOUT DEVELOPER ────────────────────────────────────── -->
 <section id="about">
   <div class="container">
     <p class="section-tag">👨‍💻 The Creator</p>
     <div class="about-inner">
-      <img class="dev-avatar" src="https://github.com/WebSpider-VR/My-Media-And-Assets/blob/main/Vivekanand%20Rajbhar%20Game%20Developer.png?raw=true" alt="Vivekanand Rajbhar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 180 180\'%3E%3Crect fill=\'%23042038\' width=\'180\' height=\'180\' rx=\'20\'/%3E%3Ctext y=\'110\' x=\'90\' text-anchor=\'middle\' font-size=\'80\'%3E🕷️%3C/text%3E%3C/svg%3E'" />
+      <img class="dev-avatar" src="https://github.com/WebSpider-VR/My-Media-And-Assets/blob/main/Vivekanand%20Rajbhar%20Game%20Developer.png?raw=true" alt="Vivekanand Rajbhar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%23042038' width='180' height='180' rx='20'/%3E%3Ctext y='110' x='90' text-anchor='middle' font-size='80'%3E🕷️%3C/text%3E%3C/svg%3E'" />
       <div>
         <div class="dev-role">Founder &amp; Solo Developer</div>
         <h2 class="dev-name">Vivekanand Rajbhar</h2>
         <p class="dev-bio">
           Indie game developer and founder of WebSpider Studios. Building cross-platform games
           that blend deep puzzle mechanics with stunning visual design. Passionate about creating
-          experiences that challenge you to think differently - one tube at a time. 💧
+          experiences that challenge you to think differently — one tube at a time. 💧
         </p>
         <div class="social-grid">
           <a class="social-card" href="https://play.google.com/store/apps/dev?id=6238970757255055559&hl=en_IN" target="_blank" rel="noopener"><i class="fab fa-google-play" style="color: #41cf7b"></i><span>Google Play</span></a>
@@ -992,7 +999,7 @@
   </div>
 </section>
 
-<!-- --- FOOTER ----------------------------------------------- -->
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand" style="display:flex;align-items:center;gap:10px;justify-content:center"><img src="./studio_logo_white.png" alt="WebSpider" style="width:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));" /> WebSpider Studios</div>
@@ -1019,7 +1026,7 @@
       <a href="https://vr-webspider.github.io/privacy-policy" target="_blank" style="opacity:0.6">Privacy Policy</a>
       <a href="https://vr-webspider.github.io/terms" target="_blank" style="opacity:0.6">Terms of Service</a>
     </div>
-    <div class="footer-copy">© 2026 WebSpider Studios - All rights reserved - Made with 💧 &amp; ☕</div>
+    <div class="footer-copy">© 2026 WebSpider Studios · All rights reserved · Made with 💧 &amp; ☕</div>
   </div>
 </footer>
 
@@ -1030,9 +1037,9 @@
 <canvas class="confetti-canvas" id="confetti-canvas"></canvas>
 
 <script>
-/* =======================================================
-   CONFIG - Edit this block to add new games / endpoints
-======================================================= */
+/* ═══════════════════════════════════════════════════════
+   CONFIG — Edit this block to add new games / endpoints
+═══════════════════════════════════════════════════════ */
 const CONFIG = {
   studio: 'WebSpider Studios',
   developerWhatsApp: '919340121744',
@@ -1046,7 +1053,7 @@ const CONFIG = {
     desc: 'Official hub for all WebSpider Studios games, updates &amp; beta programs.',
     inviteLink: 'https://whatsapp.com/channel/0029VbCeWQnBKfhzt863yJ0A', 
     rules: [
-      'Be respectful - zero tolerance for hate speech',
+      'Be respectful — zero tolerance for hate speech',
       'Keep discussions relevant to games &amp; testing',
       'No spam, ads, or self-promotion',
       'Share bugs with screenshots/screen recordings',
@@ -1071,27 +1078,34 @@ const CONFIG = {
       groupRules: [
         '✅ Test at least 3 new levels per week',
         '✅ Report bugs with device info + screenshot',
-        '✅ Be honest - we want your raw feedback!',
-        '✅ Don\'t share APK links publicly (NDA)',
+        '✅ Be honest — we want your raw feedback!',
+        '✅ Don't share APK links publicly (NDA)',
         '✓ Respect all community members',
         '🎁 Complete testing = bonus 500 in-game coins on launch!',
       ]
-    }
+    },
+    // Add future games here ↓
+    // {
+    //   id: 'game-2',
+    //   name: 'Coming Soon',
+    //   tagline: '...',
+    //   ...
+    // }
   ]
 };
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    STATE
-=================================================== */
+═══════════════════════════════════════════════════ */
 let currentGame = null;
 let currentStep = 1;
 let signupRating = 0;
 let fbRating = 0;
 const chipState = {};
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    ANIMATED BACKGROUND
-=================================================== */
+═══════════════════════════════════════════════════ */
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
@@ -1119,19 +1133,19 @@ const chipState = {};
     // Bubbles
     bubbles.forEach(b=>{
       ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-      ctx.fillStyle=\`rgba(0,212,232,\${b.o})\`;ctx.fill();
+      ctx.fillStyle=`rgba(0,212,232,${b.o})`;ctx.fill();
       b.x+=b.vx; b.y+=b.vy;
       if(b.y<-10||b.x<-10||b.x>W+10) Object.assign(b,mkBubble(),{y:H+5});
     });
     requestAnimationFrame(draw);
   }
   init(); draw();
-  window.addEventListener('resize',()=>{resize();});
+  window.addEventListener('resize',()=> {resize();});
 })();
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    COUNTER ANIMATION
-=================================================== */
+═══════════════════════════════════════════════════ */
 function animCount(el,target,dur=1200){
   let start=null;
   function step(t){
@@ -1143,9 +1157,9 @@ function animCount(el,target,dur=1200){
   requestAnimationFrame(step);
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    LIVE STATS FETCH
-=================================================== */
+═══════════════════════════════════════════════════ */
 async function refreshStats() {
   const testerEl = document.getElementById('ctr-testers');
   const spotEl = document.getElementById('ctr-spots');
@@ -1182,9 +1196,9 @@ window.addEventListener('DOMContentLoaded', () => {
   }, 600);
 });
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    GAMES GRID
-=================================================== */
+═══════════════════════════════════════════════════ */
 function buildGamesGrid() {
   const grid = document.getElementById('games-grid');
   grid.innerHTML = '';
@@ -1192,16 +1206,16 @@ function buildGamesGrid() {
     const card = document.createElement('div');
     card.className = 'game-card';
     card.id = 'card-'+g.id;
-    card.innerHTML = \`
-      <div class="card-icon">\${g.icon}</div>
-      <div class="card-title">\${g.name}</div>
-      <div class="card-sub">\${g.tagline}</div>
+    card.innerHTML = `
+      <div class="card-icon">${g.icon}</div>
+      <div class="card-title">${g.name}</div>
+      <div class="card-sub">${g.tagline}</div>
       <div class="card-badges">
-        <span class="badge badge-blue">\${g.platform}</span>
-        <span class="badge badge-gold">\${g.status}</span>
-        <span class="badge badge-green">\${g.openSpots} spots left</span>
+        <span class="badge badge-blue">${g.platform}</span>
+        <span class="badge badge-gold">${g.status}</span>
+        <span class="badge badge-green">${g.openSpots} spots left</span>
       </div>
-    \`;
+    `;
     card.onclick = () => openGame(g.id);
     grid.appendChild(card);
   });
@@ -1209,7 +1223,7 @@ function buildGamesGrid() {
   const cs = document.createElement('div');
   cs.className = 'game-card';
   cs.style.borderStyle = 'dashed';
-  cs.innerHTML = \`<div class="game-coming"><div class="plus">+</div><div style="font-weight:700">More Games Coming</div><div style="font-size:13px">WebSpider Studios is always building</div><div class="card-badges" style="margin-top:10px"><span class="badge badge-coming">2026</span></div></div>\`;
+  cs.innerHTML = `<div class="game-coming"><div class="plus">+</div><div style="font-weight:700">More Games Coming</div><div style="font-size:13px">WebSpider Studios is always building</div><div class="card-badges" style="margin-top:10px"><span class="badge badge-coming">2026</span></div></div>`;
   grid.appendChild(cs);
 }
 
@@ -1229,16 +1243,16 @@ function openGame(id) {
   if(card) card.classList.add('active');
   // Render detail header
   const dh = document.getElementById('detail-header');
-  dh.innerHTML = \`
-    <div class="detail-icon" style="filter:drop-shadow(0 0 24px \${currentGame.accentColor || 'var(--brand-primary)'})">\${currentGame.icon}</div>
+  dh.innerHTML = `
+    <div class="detail-icon" style="filter:drop-shadow(0 0 24px ${currentGame.accentColor || 'var(--brand-primary)'})">${currentGame.icon}</div>
     <div>
-      <h2 class="detail-title">\${currentGame.name}</h2>
-      <div class="detail-tagline">\${currentGame.tagline}</div>
+      <h2 class="detail-title">${currentGame.name}</h2>
+      <div class="detail-tagline">${currentGame.tagline}</div>
     </div>
     <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-      <a href="\${currentGame.playStore}" target="_blank" class="btn-outline" style="font-size:13px; border-color:\${currentGame.accentColor || 'var(--cyan-border)'}">🎮 Play Store</a>
+      <a href="${currentGame.playStore}" target="_blank" class="btn-outline" style="font-size:13px; border-color:${currentGame.accentColor || 'var(--cyan-border)'}">🎮 Play Store</a>
     </div>
-  \`;
+  `;
   const sec = document.getElementById('game-detail');
   sec.classList.add('visible');
   setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),100);
@@ -1249,9 +1263,9 @@ function openFirstGame() {
   if(CONFIG.games.length>0) openGame(CONFIG.games[0].id);
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    FORM TABS
-=================================================== */
+═══════════════════════════════════════════════════ */
 function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
@@ -1259,9 +1273,9 @@ function switchTab(tab) {
   document.getElementById('panel-'+tab).classList.add('active');
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    MULTI-STEP FORM
-=================================================== */
+═══════════════════════════════════════════════════ */
 function updateProgress(step) {
   for(let i=1;i<=4;i++){
     const n=document.getElementById('sn'+i);
@@ -1304,9 +1318,9 @@ function prevStep(from){ updateProgress(from-1); }
 function showErr(inp,err){document.getElementById(inp).classList.add('error');document.getElementById(err).classList.add('show');}
 function clearErr(inp,err){document.getElementById(inp).classList.remove('error');document.getElementById(err).classList.remove('show');}
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    CHIPS
-=================================================== */
+═══════════════════════════════════════════════════ */
 function selectChip(el, group) {
   document.getElementById(group+'-chips')?.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
@@ -1316,9 +1330,9 @@ function toggleChip(el) {
   el.classList.toggle('selected');
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    STARS
-=================================================== */
+═══════════════════════════════════════════════════ */
 function rateStar(v){
   signupRating=v;
   document.querySelectorAll('#star-group .star').forEach((s,i)=>{
@@ -1332,9 +1346,9 @@ function rateFbStar(v){
   });
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    SUBMIT SIGNUP
-=================================================== */
+═══════════════════════════════════════════════════ */
 async function submitSignup() {
   const btn = document.getElementById('submit-btn');
   const originalText = btn.innerHTML;
@@ -1359,6 +1373,7 @@ async function submitSignup() {
   };
 
   // 2. Instant User Experience: Zero Delay
+  // Trigger WhatsApp redirection immediately (before the fetch to avoid popup blockers)
   getInstantWhatsAppLink();
   
   // Show success screen immediately
@@ -1374,7 +1389,7 @@ async function submitSignup() {
     body:JSON.stringify(payload) 
   }).catch(e => console.warn('Background sync queued:', e.message));
 
-  // 4. Verification simulation
+  // 4. Verification simulation (matches the 2-3 seconds Play API takes)
   setTimeout(() => {
     const status = document.getElementById('auth-status');
     if(status) status.innerHTML = '✅ Access Authorized! You can now download.';
@@ -1382,9 +1397,9 @@ async function submitSignup() {
   }, 4000);
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    SUBMIT FEEDBACK
-=================================================== */
+═══════════════════════════════════════════════════ */
 async function submitFeedback() {
   const payload = {
     ts: new Date().toISOString(),
@@ -1406,15 +1421,16 @@ async function submitFeedback() {
   } catch(e) { console.warn('Feedback submission failed:', e.message); }
 
   document.getElementById('panel-feedback').querySelector('.form-card').children[0].style.display='none';
+  // hide everything except success
   const kids=[...document.getElementById('panel-feedback').querySelector('.form-card').children];
   kids.forEach(k=>k.style.display='none');
   document.getElementById('fb-success').style.display='block';
-  showToast('🙏 Feedback submitted - thank you!');
+  showToast('🙏 Feedback submitted — thank you!');
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    QR CODES
-=================================================== */
+═══════════════════════════════════════════════════ */
 function buildQR() {
   const grid = document.getElementById('qr-grid');
   const items = [
@@ -1422,28 +1438,29 @@ function buildQR() {
   ];
   const game = currentGame || CONFIG.games[0];
   if(game && game.whatsappGroup) {
-    items.push({ title:game.groupName, desc:\`Official beta testers group for \${game.name}. Get APK links, bug report channels &amp; dev announcements.\`, link:game.whatsappGroup, rules:game.groupRules||[] });
+    items.push({ title:game.groupName, desc:`Official beta testers group for ${game.name}. Get APK links, bug report channels &amp; dev announcements.`, link:game.whatsappGroup, rules:game.groupRules||[] });
   } else {
-    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we\\'ll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
+    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we'll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
   }
   grid.innerHTML = '';
   items.forEach(item=>{
     const card = document.createElement('div');
     card.className='qr-card';
     const qbId='qr-'+Math.random().toString(36).slice(2);
-    const rulesHtml = item.rules.length ? \`<ul style="text-align:left;list-style:none;padding:0;margin:16px 0;font-size:12px;color:var(--text-muted)">\${item.rules.map(r=>\`<li style="padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)">• \${r}</li>\`).join('')}</ul>\` : '';
-    card.innerHTML = \`
-      <div class="qr-title">💬 \${item.title}</div>
-      <div class="qr-box"><div id="\${\qbId}" style="width:160px;height:160px;display:flex;align-items:center;justify-content:center"></div></div>
-      <div class="qr-desc">\${item.desc}</div>
-      \${rulesHtml}
-      \${item.link
-        ? \`<button class="copy-link-btn" id="cpbtn-\${qbId}" onclick="copyLink('\${item.link}','cpbtn-\${qbId}')">📋 Copy Invite Link</button>
-           <a href="\${item.link}" target="_blank" style="display:block;margin-top:14px;text-align:center;color:#ffffff;background:#25D366;padding:12px;border-radius:24px;font-size:14px;font-weight:bold;text-decoration:none;box-shadow:0 6px 16px rgba(37,211,102,0.3);border:2px solid #ffffff;transition:all 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">📲 Open in WhatsApp</a>\`
-        : \`<div style="background:var(--cyan-dim);border:1px dashed var(--cyan-border);border-radius:10px;padding:12px;font-size:13px;color:var(--text-muted)">🔔 Sign up above to receive the group link via email!</div>\`
+    const rulesHtml = item.rules.length ? `<ul style="text-align:left;list-style:none;padding:0;margin:16px 0;font-size:12px;color:var(--text-muted)">${item.rules.map(r=>`<li style="padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)">• ${r}</li>`).join('')}</ul>` : '';
+    card.innerHTML = `
+      <div class="qr-title">💬 ${item.title}</div>
+      <div class="qr-box"><div id="${qbId}" style="width:160px;height:160px;display:flex;align-items:center;justify-content:center"></div></div>
+      <div class="qr-desc">${item.desc}</div>
+      ${rulesHtml}
+      ${item.link
+        ? `<button class="copy-link-btn" id="cpbtn-${qbId}" onclick="copyLink('${item.link}','cpbtn-${qbId}')">📋 Copy Invite Link</button>
+           <a href="${item.link}" target="_blank" style="display:block;margin-top:14px;text-align:center;color:#ffffff;background:#25D366;padding:12px;border-radius:24px;font-size:14px;font-weight:bold;text-decoration:none;box-shadow:0 6px 16px rgba(37,211,102,0.3);border:2px solid #ffffff;transition:all 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">📲 Open in WhatsApp</a>`
+        : `<div style="background:var(--cyan-dim);border:1px dashed var(--cyan-border);border-radius:10px;padding:12px;font-size:13px;color:var(--text-muted)">🔔 Sign up above to receive the group link via email!</div>`
       }
-    \`;
+    `;
     grid.appendChild(card);
+    // Generate QR
     if(item.link && typeof QRCode !== 'undefined') {
       setTimeout(() => {
         try {
@@ -1476,34 +1493,34 @@ function copyLink(link, btnId) {
   });
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    INSTANT WHATSAPP LINK (AUTO-REPLY TRICK)
-=================================================== */
+═══════════════════════════════════════════════════ */
 function getInstantWhatsAppLink(customType) {
   const number = CONFIG.developerWhatsApp || '919340121744';
   const gameName = currentGame?.name || 'your game';
-  let text = \`Hi WebSpider Studios! 🕷️ I just registered for the \${gameName} Beta. Can I get the download link please?\`;
+  let text = `Hi WebSpider Studios! 🕷️ I just registered for the ${gameName} Beta. Can I get the download link please?`;
   
   if (customType === 'Menu') {
     text = "Hi WebSpider! 🕷️ I'd like to see the main menu and current games.";
   }
   
-  const url = \`https://wa.me/\${number}?text=\${encodeURIComponent(text)}\`;
+  const url = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 }
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    SHARE
-=================================================== */
+═══════════════════════════════════════════════════ */
 function shareSignup() {
   const url = window.location.href;
-  const text = \`🎮 I just applied to beta test \${currentGame?.name||'an awesome new game'} by WebSpider Studios!\\n\\nJoin the beta squad here: \${url}\\n\\nLimited spots! 💧\`;
+  const text = `🎮 I just applied to beta test ${currentGame?.name||'an awesome new game'} by WebSpider Studios!\n\nJoin the beta squad here: ${url}\n\nLimited spots! 💧`;
   if(navigator.share) { navigator.share({title:'Join Beta',text,url}); }
-  else { window.open(\`https://api.whatsapp.com/send?text=\${encodeURIComponent(text)}\`, '_blank'); }
+  else { window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank'); }
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    CONFETTI
-=================================================== */
+═══════════════════════════════════════════════════ */
 function launchConfetti(){
   const canvas=document.getElementById('confetti-canvas');
   const ctx=canvas.getContext('2d');
@@ -1529,36 +1546,38 @@ function launchConfetti(){
   draw();
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    TOAST
-=================================================== */
+═══════════════════════════════════════════════════ */
 function showToast(msg, dur=3000){
   const t=document.getElementById('toast'); t.textContent=msg;
   t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),dur);
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    MOBILE NAV
-=================================================== */
+═══════════════════════════════════════════════════ */
 function toggleNav(){
   const nav=document.getElementById('main-nav');
   nav.classList.toggle('open');
   document.getElementById('ham-btn').textContent=nav.classList.contains('open')?'✕':'☰';
 }
 
-/* ===================================================
+/* ═══════════════════════════════════════════════════
    INIT
-=================================================== */
+═══════════════════════════════════════════════════ */
 buildGamesGrid();
-buildQR();
+buildQR(); // Build community QR without game context initially
 
+// Update community QR section on load
 (function(){
   const sub = document.querySelector('.section-sub--community');
   if(sub && CONFIG.community.inviteLink) {
-    sub.innerHTML = \`Scan the QR code or tap the link to join our official WhatsApp community and game-specific tester groups. The community invite link is <a href="\${CONFIG.community.inviteLink}" target="_blank" style="color:#ffffff; font-weight:700; text-decoration:underline;">available here</a>.\`;
+    sub.innerHTML = `Scan the QR code or tap the link to join our official WhatsApp community and game-specific tester groups. The community invite link is <a href="${CONFIG.community.inviteLink}" target="_blank" style="color:#ffffff; font-weight:700; text-decoration:underline;">available here</a>.`;
   }
 })();
 
+// Intersection observer for scroll animations
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.style.opacity=1; });
 },{threshold:.1});
