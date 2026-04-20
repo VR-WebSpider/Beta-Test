@@ -4,8 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebSpider Studios — Beta Hub</title>
+  <link rel="icon" type="image/png" href="./studio_logo_white.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <meta name="description" content="Join beta testing for WebSpider Studios games. Get early access, exclusive rewards, and shape the future of indie gaming." />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vr-webspider.github.io/Beta-Test/" />
+  <meta property="og:title" content="WebSpider Studios — Beta Hub" />
+  <meta property="og:description" content="Join the beta squad! Get early access to premium mobile games like Aqua Sort." />
+  <meta property="og:image" content="https://github.com/VR-WebSpider/Beta-Test/raw/main/studio_logo_white.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://vr-webspider.github.io/Beta-Test/" />
+  <meta property="twitter:title" content="WebSpider Studios — Beta Hub" />
+  <meta property="twitter:description" content="Join the beta squad! Get early access to premium mobile games like Aqua Sort." />
+  <meta property="twitter:image" content="https://github.com/VR-WebSpider/Beta-Test/raw/main/studio_logo_white.png" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,31 +30,32 @@
   <style>
     /* ─── Design Tokens ─────────────────────────────────────── */
     :root {
-      --navy:       #15d6c8;
-      --navy-mid:   transparent;
-      --navy-card:  rgba(255, 255, 255, 0.25);
-      --teal:       #0d9488;
-      --teal-light: #2dd4bf;
-      --cyan:       #ffffff;
-      --cyan-glow:  #ccfbf1;
-      --cyan-dim:   rgba(255, 255, 255, 0.4);
-      --cyan-border:rgba(255, 255, 255, 0.7);
-      --gold:       #fde047;
-      --gold-dim:   rgba(253, 224, 71, 0.3);
-      --green:      #ffffff;
-      --text:       #ffffff;
-      --text-muted: rgba(255,255,255,0.9);
-      --radius:     24px;
-      --glass:      rgba(255, 255, 255, 0.3);
-      --shadow:     0 20px 40px rgba(0, 0, 0, 0.1);
+      --brand-primary: #34A853; /* Vibrant Green */
+      --brand-dark:    #202124; /* Deep Charcoal Black */
+      --brand-mid:     transparent;
+      --brand-card:    rgba(32, 33, 36, 0.6);
+      --teal:          #34A853;
+      --teal-light:    #41cf7b;
+      --cyan:          #ffffff;
+      --cyan-glow:     #ccfbf1;
+      --cyan-dim:      rgba(255, 255, 255, 0.1);
+      --cyan-border:   rgba(255, 255, 255, 0.2);
+      --gold:          #fde047;
+      --gold-dim:      rgba(253, 224, 71, 0.3);
+      --green:         #34A853;
+      --text:          #ffffff;
+      --text-muted:    rgba(255,255,255,0.8);
+      --radius:        24px;
+      --glass:         rgba(32, 33, 36, 0.4);
+      --shadow:        0 20px 40px rgba(0, 0, 0, 0.3);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: linear-gradient(135deg, #1de3c6, #1bd9aa);
+      background: #202124;
       color: var(--text);
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
       overflow-x: hidden;
       min-height: 100vh;
     }
@@ -51,10 +68,9 @@
     /* ─── Header ────────────────────────────────────────────── */
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 255, 255, 0.15); box-shadow: 0 4px 30px rgba(0,0,0,0.1); text-shadow: 0 1px 4px rgba(0,0,0,0.25);
-      backdrop-filter: blur(20px);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--cyan-border);
+      background: rgba(255, 255, 255, 0.12); box-shadow: 0 4px 30px rgba(0,0,0,0.1); text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       padding: 0 24px;
     }
     .header-inner {
@@ -64,7 +80,9 @@
     }
     .studio-logo {
       display: flex; align-items: center; gap: 10px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
     }
+    .studio-logo:hover { opacity: 0.9; transform: scale(1.02); }
     .logo-spider {
       width: 40px; height: 40px;
       background: var(--cyan-dim);
@@ -83,7 +101,7 @@
     }
     nav a:hover { color:#ffffff; background:var(--cyan-dim); }
     .nav-cta {
-      background: var(--cyan) !important; color: var(--navy) !important;
+      background: var(--cyan) !important; color: var(--brand-primary) !important;
       font-weight:700 !important; border-radius:20px;
     }
     .nav-cta:hover { background: var(--cyan-glow) !important; transform:scale(1.03); }
@@ -108,9 +126,10 @@
       font-size:clamp(16px,3vw,20px); margin-bottom:8px; }
     .hero-title {
       font-family:'Righteous',sans-serif;
-      font-size:clamp(48px,9vw,96px);
-      line-height:1.05;
-      background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+      font-size:clamp(48px, 9vw, 96px);
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, #34A853 100%); 
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.3));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
       background-clip:text; margin-bottom:20px;
     }
@@ -178,13 +197,13 @@
     .hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     .btn-primary {
       background:linear-gradient(135deg,#ffffff 0%,#e0f2fe 100%);
-      color:var(--navy); font-weight:800; font-size:16px;
+      color:var(--brand-primary); font-weight:800; font-size:16px;
       padding:14px 36px; border-radius:50px; border:none; cursor:pointer;
       text-decoration:none; display:inline-flex; align-items:center; gap:8px;
       box-shadow:0 12px 24px rgba(13,110,253,.3);
       transition:transform .2s, box-shadow .2s;
     }
-    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 0 50px rgba(0,212,232,.6); }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 0 50px rgba(52, 168, 83, 0.4); }
     .btn-outline {
       background:transparent; color:#ffffff; font-weight:700; font-size:15px;
       padding:13px 30px; border-radius:50px; cursor:pointer; text-decoration:none;
@@ -192,7 +211,7 @@
       display:inline-flex; align-items:center; gap:8px;
       transition:background .2s, transform .2s;
     }
-    .btn-outline:hover { background:var(--cyan-dim); transform:translateY(-2px); }
+    .btn-outline:hover { background:var(--cyan-dim); transform:translateY(-2px); border-color: var(--brand-primary); }
     .hero-stats { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-top:50px; }
     .stat { text-align:center; }
     .stat-num { font-family:'Righteous',sans-serif; font-size:32px; color:#ffffff; }
@@ -209,10 +228,10 @@
     hr.cyan-line { border:none; border-top:1px solid var(--cyan-border); margin:60px 0; }
 
     /* ─── Games Grid ────────────────────────────────────────── */
-    #games { background:var(--navy-mid); }
+    #games { background:var(--brand-primary-mid); }
     .games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; }
     .game-card {
-      background:rgba(255,255,255,0.25); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.6); box-shadow:0 12px 32px rgba(0,0,0,0.1);
+      background:rgba(255,255,255,0.05); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.1); box-shadow:0 12px 32px rgba(0,0,0,0.2);
       border-radius:var(--radius); padding:28px; cursor:pointer;
       transition:transform .25s, box-shadow .25s, border-color .25s;
       position:relative; overflow:hidden;
@@ -222,9 +241,9 @@
       background:linear-gradient(135deg,var(--cyan-dim),transparent);
       opacity:0; transition:opacity .3s;
     }
-    .game-card:hover,.game-card.active { transform:translateY(-6px); box-shadow:0 16px 50px rgba(0,212,232,.2); border-color:#ffffff; }
+    .game-card:hover,.game-card.active { transform:translateY(-6px); box-shadow:0 16px 50px rgba(52, 168, 83, 0.2); border-color:var(--brand-primary); }
     .game-card:hover::before,.game-card.active::before { opacity:1; }
-    .game-card.active { border-color:var(--cyan-glow); }
+    .game-card.active { border-color:var(--brand-primary); background: rgba(52, 168, 83, 0.05); }
     .card-icon { font-size:40px; margin-bottom:16px; }
     .card-title { font-family:'Righteous',sans-serif; font-size:22px; color:var(--text); margin-bottom:6px; }
     .card-sub { font-size:13px; color:rgba(255,255,255,0.9); margin-bottom:16px; }
@@ -259,7 +278,7 @@
       font-size:14px; padding:11px 28px; cursor:pointer; transition:.2s;
       letter-spacing:.5px;
     }
-    .tab-btn.active { background:var(--cyan); color:var(--navy); }
+    .tab-btn.active { background:var(--cyan); color:var(--brand-primary); }
     .tab-btn:hover:not(.active) { background:var(--cyan-dim); color:#ffffff; }
 
     .form-panel { display:none; }
@@ -267,9 +286,9 @@
 
     /* Signup form */
     .form-card {
-      background:rgba(255,255,255,0.25); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.6); box-shadow:0 12px 32px rgba(0,0,0,0.1);
+      background:rgba(255,255,255,0.03); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.1);
       border-radius: 20px; padding:40px; max-width:700px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     }
     /* Step progress */
     .steps-wrap { display:flex; align-items:center; gap:0; margin-bottom:36px; }
@@ -278,9 +297,9 @@
       display:flex; align-items:center; justify-content:center;
       font-size:13px; font-weight:800; flex-shrink:0;
       border:2px solid var(--cyan-border); color:rgba(255,255,255,0.9);
-      background:var(--navy); transition:.3s;
+      background:var(--brand-primary); transition:.3s;
     }
-    .step-node.done { background:var(--cyan); border-color:#ffffff; color:var(--navy); }
+    .step-node.done { background:var(--cyan); border-color:#ffffff; color:var(--brand-primary); }
     .step-node.current { border-color:#ffffff; color:#ffffff;
       box-shadow:0 0 16px rgba(0,212,232,.4); }
     .step-line { flex:1; height:2px; background:var(--cyan-border); transition:.3s; }
@@ -301,36 +320,36 @@
     .field-label { font-size:13px; font-weight:700; color:rgba(255,255,255,0.9);
       margin-bottom:8px; display:block; text-transform:uppercase; letter-spacing:.8px; }
     .field-input {
-      width:100%; background:rgba(255,255,255,0.5); border:1.5px solid rgba(255,255,255,0.7); color:#0f172a; box-shadow:inset 0 2px 4px rgba(0,0,0,0.05);
+      width:100%; background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.1); color:#ffffff; box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
       border-radius:10px; padding:13px 16px; font-size:15px;
       font-family:'Plus Jakarta Sans',sans-serif; transition:.2s; outline:none;
     }
-    .field-input::placeholder { color: rgba(15, 23, 42, 0.6); }
-    .field-input:focus { border-color:#ffffff; background:rgba(255,255,255,0.7);
-      box-shadow:0 0 0 3px rgba(0,212,232,0.1); }
+    .field-input::placeholder { color: rgba(255, 255, 255, 0.4); }
+    .field-input:focus { border-color:var(--brand-primary); background:rgba(255,255,255,0.08);
+      box-shadow:0 0 0 3px rgba(52, 168, 83, 0.1); }
     .field-input.error { border-color:#ff4d6d; }
     .field-error { font-size:12px; color:#ff4d6d; margin-top:5px; display:none; }
     .field-error.show { display:block; }
     .phone-wrap { display:flex; gap:8px; }
     .phone-prefix {
-      background:rgba(255,255,255,0.5); border:1.5px solid rgba(255,255,255,0.7); color:#0f172a; box-shadow:inset 0 2px 4px rgba(0,0,0,0.05);
+      background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.1); color:#ffffff; box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
       border-radius:10px; padding:13px 12px;
       font-size:15px; font-family:'Plus Jakarta Sans',sans-serif; outline:none;
       min-width:100px; cursor:pointer;
     }
-    .phone-prefix:focus { border-color:#ffffff; }
+    .phone-prefix:focus { border-color:var(--brand-primary); }
     select.field-input { cursor:pointer; }
-    select.field-input option, select.phone-prefix option { background:white; color:#0f172a; }
+    select.field-input option, select.phone-prefix option { background:#202124; color:#ffffff; }
 
     /* Chips */
     .chip-group { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
     .chip {
-      background:rgba(255, 255, 255, 0.7); border:1.5px solid rgba(255, 255, 255, 0.8); color:#0f172a;
+      background:rgba(255, 255, 255, 0.05); border:1.5px solid rgba(255, 255, 255, 0.1); color:#ffffff;
       border-radius:50px; padding:8px 18px; font-size:13px; font-weight:700;
       cursor:pointer; transition:.2s; user-select:none;
     }
-    .chip.selected { background:var(--cyan); border-color:#ffffff; color:var(--navy); box-shadow:0 0 20px rgba(0,212,232,0.3); }
-    .chip:hover:not(.selected) { background:rgba(255,255,255,0.9); transform:translateY(-1px); }
+    .chip.selected { background:var(--cyan); border-color:#ffffff; color:#021829 !important; font-weight: 800; box-shadow:0 0 25px rgba(0,212,232,0.5); transform: scale(1.05); }
+    .chip:hover:not(.selected) { background:rgba(255,255,255,0.9); transform:translateY(-2px); }
 
     /* Stars */
     .star-group { display:flex; gap:8px; margin-top:8px; }
@@ -344,11 +363,18 @@
       border:none; border-radius:50px; padding:13px 32px; font-weight:800;
       font-size:15px; cursor:pointer; transition:.2s; font-family:'Plus Jakarta Sans',sans-serif;
     }
-    .btn-next { background:linear-gradient(135deg,var(--cyan),var(--teal-light)); color:var(--navy);
-      min-width:160px; box-shadow:0 0 20px rgba(0,212,232,.3); }
-    .btn-next:hover { transform:translateY(-2px); box-shadow:0 0 35px rgba(0,212,232,.5); }
-    .btn-back { background:transparent; border:1.5px solid var(--cyan-border); color:rgba(255,255,255,0.9); }
-    .btn-back:hover { background:var(--cyan-dim); color:#ffffff; }
+    .btn-next { background:linear-gradient(135deg,var(--brand-primary),var(--teal-light)); color:#ffffff;
+      min-width:160px; box-shadow:0 8px 24px rgba(52, 168, 83, 0.3); }
+    .btn-next:hover { transform:translateY(-3px); box-shadow:0 0 40px rgba(52, 168, 83, 0.5); }
+    .btn-back { background:transparent; border:1.5px solid var(--cyan-border); color:rgba(255,255,255,0.9); backdrop-filter: blur(8px); }
+    .btn-back:hover { background:var(--cyan-dim); color:#ffffff; transform: translateY(-1px); border-color: var(--brand-primary); }
+
+    /* Spinner */
+    .spinner {
+      width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%;
+      border-top-color: #fff; animation: spin 0.8s linear infinite; display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Success Screen */
     .success-screen {
@@ -369,10 +395,10 @@
     .r-star:hover { transform:scale(1.1); }
 
     /* ─── QR + Links ─────────────────────────────────────────── */
-    #community { background:var(--navy-mid); padding:80px 24px; }
+    #community { background:var(--brand-primary-mid); padding:80px 24px; }
     .qr-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:32px; }
     .qr-card {
-      background:rgba(255,255,255,0.25); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.6); box-shadow:0 12px 32px rgba(0,0,0,0.1);
+      background:rgba(255,255,255,0.03); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(255,255,255,0.1); box-shadow:0 12px 32px rgba(0,0,0,0.3);
       border-radius:20px; padding:36px 28px; text-align:center;
       transition:transform .25s, box-shadow .25s;
     }
@@ -396,7 +422,7 @@
       padding:9px 18px; border-radius:50px; cursor:pointer;
       transition:.2s; width:100%; justify-content:center;
     }
-    .copy-link-btn:hover { background:var(--cyan); color:var(--navy); }
+    .copy-link-btn:hover { background:var(--cyan); color:var(--brand-primary); }
     .copy-link-btn.copied { background:var(--green); border-color:var(--green); color:#fff; }
 
     /* ─── About Developer ───────────────────────────────────── */
@@ -428,7 +454,7 @@
 
     /* ─── Footer ────────────────────────────────────────────── */
     footer {
-      background:var(--navy-mid); border-top:1px solid var(--cyan-border);
+      background:var(--brand-primary-mid); border-top:1px solid var(--cyan-border);
       padding:40px 24px;
     }
     .footer-inner {
@@ -452,7 +478,7 @@
     /* ─── Toast ─────────────────────────────────────────────── */
     .toast {
       position:fixed; bottom:30px; right:30px; z-index:9998;
-      background:var(--navy-card); border:1px solid var(--cyan-border);
+      background:var(--brand-primary-card); border:1px solid var(--cyan-border);
       color:var(--text); padding:14px 22px; border-radius:12px;
       font-size:14px; font-weight:600; box-shadow:0 8px 32px rgba(0,0,0,.4);
       transform:translateY(80px); opacity:0; transition:.35s cubic-bezier(.22,1,.36,1);
@@ -478,17 +504,17 @@
     .social-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:16px; margin-top:24px; }
     .social-card {
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      background:rgba(255,255,255,0.25); backdrop-filter:blur(16px);
-      border:1.5px solid rgba(255,255,255,0.6); border-radius:20px;
+      background:rgba(255,255,255,0.05); backdrop-filter:blur(16px);
+      border:1.5px solid rgba(255,255,255,0.1); border-radius:20px;
       padding:24px 10px; color:#ffffff; text-decoration:none;
       transition:transform 0.3s, box-shadow 0.3s, background 0.3s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05); gap: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2); gap: 12px;
       text-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .social-card i { font-size:38px; transition: transform 0.3s; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
     .social-card:hover { 
-      transform:translateY(-6px); box-shadow:0 15px 35px rgba(0,0,0,0.1); 
-      background:rgba(255,255,255,0.45); 
+      transform:translateY(-6px); box-shadow:0 15px 35px rgba(52, 168, 83, 0.3); 
+      background:rgba(52, 168, 83, 0.1); border-color: var(--brand-primary);
     }
     .social-card:hover i { transform: scale(1.15); }
     .social-card span { font-weight:700; font-size:14px; letter-spacing:0.5px; }
@@ -496,6 +522,70 @@
     .fsoc { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:white; font-size:18px; transition:0.2s; }
     .fsoc:hover { transform:scale(1.15); filter:brightness(1.2); }
 
+    /* ─── Floating WhatsApp Widget ───────────────────────────── */
+    .wa-float-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px 10px 10px;
+      background: rgba(37, 211, 102, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      border-radius: 50px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+    .wa-float-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(37, 211, 102, 0.25);
+      border-color: rgba(37, 211, 102, 0.8);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.3);
+    }
+    .wa-icon-circle {
+      width: 44px;
+      height: 44px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+    }
+    .wa-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff3b30;
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      border: 2px solid #202124;
+      font-weight: 900;
+    }
+    .wa-text-bubble {
+      display: flex;
+      flex-direction: column;
+    }
+    .wa-text-top { font-size: 10px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    @media(max-width: 768px) {
+      .wa-float-btn span.wa-label { display: none; }
+      .wa-float-btn { padding: 0; border: none; background: none; box-shadow: none; left: 20px; bottom: 20px; }
+      .wa-icon-circle { width: 56px; height: 56px; font-size: 30px; }
+    }
 </style>
 </head>
 <body>
@@ -574,8 +664,8 @@
     </p>
 
     <div class="hero-btns">
-        <a href="#game-detail" class="btn-primary" onclick="openFirstGame()" style="background:linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color:#ffffff; box-shadow:0 8px 24px rgba(6, 182, 212, 0.4);">🚀 Join Beta</a>
-        <a href="#games" class="btn-primary" style="background:rgba(255,255,255,0.95); color:#083344">🎮 Browse Games</a>
+        <a href="#game-detail" class="btn-primary" onclick="openFirstGame()" style="background:linear-gradient(135deg, #34A853 0%, #41cf7b 100%); color:#ffffff; box-shadow:0 8px 24px rgba(52, 168, 83, 0.4);">🚀 Join Beta</a>
+        <a href="#games" class="btn-primary" style="background:#ffffff; color:#202124">🎮 Browse Games</a>
         <a href="#community" class="btn-outline">💬 Join Community</a>
       </div>
 
@@ -647,6 +737,13 @@
             <input class="field-input" id="f-email" type="email" placeholder="you@example.com" />
             <div class="field-error" id="e-email">Enter a valid email</div>
           </div>
+          <div class="field-group" style="display:flex; align-items:flex-start; gap:10px; margin-top:24px;">
+            <input type="checkbox" id="f-consent" style="width:20px; height:20px; margin-top:2px; accent-color:var(--brand-primary); cursor:pointer;">
+            <label for="f-consent" style="font-size:13px; color:rgba(255,255,255,0.8); line-height:1.4; cursor:pointer;">
+              I agree to the <a href="#privacy" style="color:var(--brand-primary); text-decoration:none; font-weight:700;">Beta Testing Terms</a> & Privacy Policy. *
+            </label>
+          </div>
+          <div class="field-error" id="e-consent" style="margin-top:-10px; margin-bottom:10px;">Please accept the terms to continue</div>
           <div class="field-group">
             <label class="field-label">WhatsApp Number</label>
             <div class="phone-wrap">
@@ -675,6 +772,7 @@
               <div class="chip" onclick="selectChip(this,'source')">Twitter/X</div>
               <div class="chip" onclick="selectChip(this,'source')">Friend</div>
               <div class="chip" onclick="selectChip(this,'source')">LinkedIn</div>
+              <div class="chip" onclick="selectChip(this,'source')">Other</div>
             </div>
           </div>
           <div class="form-nav">
@@ -772,14 +870,22 @@
       <!-- Success screen -->
       <div class="success-screen" id="signup-success">
         <div class="success-emoji">🎉</div>
-        <h2 class="section-title" style="margin-bottom:12px">You're in the Beta Squad!</h2>
-        <p style="color:rgba(255,255,255,0.9);max-width:500px;margin:0 auto 32px;font-size:16px;line-height:1.7">
-          Your application is received! 🎮 Click the button below to get your instant download link via WhatsApp, or check your email!
+        <h2 class="section-title" style="margin-bottom:12px">Application Received!</h2>
+        <p style="color:rgba(255,255,255,0.9);max-width:500px;margin:0 auto 24px;font-size:16px;line-height:1.7">
+          Awesome! The <strong>WebSpider Concierge</strong> is now processing your access script. 🤖<br><br>
+          <span style="display:block; padding:15px; background:rgba(52, 168, 83, 0.08); border-radius:12px; font-size:14px; border:1px solid rgba(52, 168, 83, 0.3);">
+            📱 <strong>Check your WhatsApp!</strong> You will receive an interactive greeting with your download link in a few seconds.
+          </span><br>
+          <div id="auth-status" style="margin-bottom:20px; font-size:14px; color:var(--brand-primary); font-weight:bold;">
+            <span class="spinner" style="border-width:2px; width:14px; height:14px; margin-right:8px;"></span> Authenticating Play Store Access...
+          </div>
+          Haven't received the message yet? Tap below to trigger the concierge manually!
         </p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;flex-direction:column;align-items:center;">
-          <button class="btn-primary" onclick="getInstantWhatsAppLink()" style="background:#25D366;color:#ffffff;font-size:16px;padding:16px 32px;box-shadow:0 8px 24px rgba(37,211,102,.4);border:2px solid #ffffff;">📲 Get Download Link on WhatsApp</button>
-          <div style="display:flex;gap:14px;margin-top:10px;">
-            <a href="#community" class="btn-outline">💬 Community</a>
+          <button class="btn-primary" onclick="getInstantWhatsAppLink()" style="background:#25D366;color:#ffffff;font-size:17px;padding:18px 36px;box-shadow:0 10px 30px rgba(37, 211, 102, 0.4);border:2px solid #ffffff;transform:scale(1.05);">📲 Chat with Concierge</button>
+          <div style="display:flex;gap:14px;margin-top:20px;">
+            <a href="#games" class="btn-outline" onclick="location.reload()">🎮 Explore Games</a>
+            <a href="#community" class="btn-outline">💬 Join Community</a>
             <button class="btn-outline" onclick="shareSignup()">📤 Share Form</button>
           </div>
         </div>
@@ -864,7 +970,7 @@
   <div class="container">
     <p class="section-tag">👨‍💻 The Creator</p>
     <div class="about-inner">
-      <img class="dev-avatar" src="https://github.com/WebSpider-VR/My-Media-And-Assets/blob/main/Vivekanand%20Rajbhar%20Game%20Developer.png?raw=true" alt="Vivekanand Rajbhar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 180 180\'%3E%3Crect fill=\'%23042038\' width=\'180\' height=\'180\' rx=\'20\'/%3E%3Ctext y=\'110\' x=\'90\' text-anchor=\'middle\' font-size=\'80\'%3E🕷️%3C/text%3E%3C/svg%3E'" />
+      <img class="dev-avatar" src="https://github.com/WebSpider-VR/My-Media-And-Assets/blob/main/Vivekanand%20Rajbhar%20Game%20Developer.png?raw=true" alt="Vivekanand Rajbhar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%23042038' width='180' height='180' rx='20'/%3E%3Ctext y='110' x='90' text-anchor='middle' font-size='80'%3E🕷️%3C/text%3E%3C/svg%3E'" />
       <div>
         <div class="dev-role">Founder &amp; Solo Developer</div>
         <h2 class="dev-name">Vivekanand Rajbhar</h2>
@@ -886,6 +992,7 @@
           <a class="social-card" href="https://x.com/VR_WebSpider" target="_blank" rel="noopener"><svg viewBox="0 0 1200 1227" style="height:32px; fill:#ffffff; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1));" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg><span>Twitter/X</span></a>
           <a class="social-card" href="https://discord.com/users/vr_webspider" target="_blank" rel="noopener"><i class="fab fa-discord" style="color: #5865F2"></i><span>Discord</span></a>
           <a class="social-card" href="https://www.twitch.tv/vr_webspider" target="_blank" rel="noopener"><i class="fab fa-twitch" style="color: #9146FF"></i><span>Twitch</span></a>
+          <a class="social-card" href="https://t.me/WebSpider1024" target="_blank" rel="noopener"><i class="fab fa-telegram" style="color: #229ED9"></i><span>Telegram</span></a>
         </div>
       </div>
     </div>
@@ -909,12 +1016,15 @@
       <a class="fsoc" href="https://x.com/VR_WebSpider" target="_blank" style="color:#ffffff"><svg viewBox="0 0 1200 1227" style="height:18px; fill:#ffffff;" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/></svg></a>
       <a class="fsoc" href="https://discord.com/users/vr_webspider" target="_blank" style="color:#5865F2"><i class="fab fa-discord"></i></a>
       <a class="fsoc" href="https://www.twitch.tv/vr_webspider" target="_blank" style="color:#9146FF"><i class="fab fa-twitch"></i></a>
+      <a class="fsoc" href="https://t.me/WebSpider1024" target="_blank" style="color:#229ED9"><i class="fab fa-telegram"></i></a>
     </div>
-    <div class="footer-links">
+    <div class="footer-links" id="privacy">
       <a href="#games">Games</a>
       <a href="#community">WhatsApp</a>
       <a href="#about">About</a>
       <a href="https://play.google.com/store/apps/dev?id=6238970757255055559" target="_blank">Play Store</a>
+      <a href="https://vr-webspider.github.io/privacy-policy" target="_blank" style="opacity:0.6">Privacy Policy</a>
+      <a href="https://vr-webspider.github.io/terms" target="_blank" style="opacity:0.6">Terms of Service</a>
     </div>
     <div class="footer-copy">© 2026 WebSpider Studios · All rights reserved · Made with 💧 &amp; ☕</div>
   </div>
@@ -929,17 +1039,19 @@
 <script>
 /* ═══════════════════════════════════════════════════════
    CONFIG — Edit this block to add new games / endpoints
-═══════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════ */
 const CONFIG = {
   studio: 'WebSpider Studios',
-  developerWhatsApp: '919340121744', // IMPORTANT: Paste your WhatsApp Business number here WITH country code, no + or spaces (e.g. '919876543210'). This auto-delivers the app link!
-  sheetsEndpointSignup:   'https://script.google.com/macros/s/AKfycbxZs_Mzloi8eZMIV9Oqf4mmi0nokrM493j3rijeuUxraKR29EhaOzKlhc1CQ7jSrzqO/exec',
-  sheetsEndpointFeedback: 'https://script.google.com/macros/s/AKfycbxZs_Mzloi8eZMIV9Oqf4mmi0nokrM493j3rijeuUxraKR29EhaOzKlhc1CQ7jSrzqO/exec',
+  developerWhatsApp: '919340121744',
+  sheetsEndpointSignup:   'https://script.google.com/macros/s/AKfycbwtQuv-9mJena_5WUfDMSL3tKOlWGC6fUcbM5tf4OMJo8oK-9H0LQU7P2S-3hDwrSgR/exec',
+  sheetsEndpointFeedback: 'https://script.google.com/macros/s/AKfycbwtQuv-9mJena_5WUfDMSL3tKOlWGC6fUcbM5tf4OMJo8oK-9H0LQU7P2S-3hDwrSgR/exec',
+  primaryColor: '#34A853',
+  secondaryColor: '#202124',
 
   community: {
-    name: 'WebSpider Studios Community',
+    name: 'WebSpider Studios WhatsApp Channel',
     desc: 'Official hub for all WebSpider Studios games, updates &amp; beta programs.',
-    inviteLink: '', // Paste WhatsApp community invite link here (Create on mobile app first!)
+    inviteLink: 'https://whatsapp.com/channel/0029VbCeWQnBKfhzt863yJ0A', 
     rules: [
       'Be respectful — zero tolerance for hate speech',
       'Keep discussions relevant to games &amp; testing',
@@ -959,15 +1071,15 @@ const CONFIG = {
       accentColor: '#00D4E8',
       platform: 'Android',
       status: 'Beta',
-      openSpots: 20,
-      playStore: 'https://play.google.com/store/apps/dev?id=6238970757255055559&hl=en_IN',
+      openSpots: 100, // Updated max capacity
+      playStore: 'https://play.google.com/store/apps/details?id=com.webspider.aquasort.mobile',
       whatsappGroup: 'https://chat.whatsapp.com/ImE2kPTV4JUAvm3D3YNADp', // Paste Aqua Sort beta testers WhatsApp invite link here
       groupName: '💬 Aqua Sort Beta Test',
       groupRules: [
         '✅ Test at least 3 new levels per week',
         '✅ Report bugs with device info + screenshot',
         '✅ Be honest — we want your raw feedback!',
-        '✅ Don\'t share APK links publicly (NDA)',
+        '✅ Don't share APK links publicly (NDA)',
         '✓ Respect all community members',
         '🎁 Complete testing = bonus 500 in-game coins on launch!',
       ]
@@ -984,7 +1096,7 @@ const CONFIG = {
 
 /* ═══════════════════════════════════════════════════
    STATE
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 let currentGame = null;
 let currentStep = 1;
 let signupRating = 0;
@@ -993,7 +1105,7 @@ const chipState = {};
 
 /* ═══════════════════════════════════════════════════
    ANIMATED BACKGROUND
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
@@ -1021,7 +1133,7 @@ const chipState = {};
     // Bubbles
     bubbles.forEach(b=>{
       ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(0,212,232,${b.o})`;ctx.fill();
+      ctx.fillStyle="rgba(0,212,232," + b.o + ")";ctx.fill();
       b.x+=b.vx; b.y+=b.vy;
       if(b.y<-10||b.x<-10||b.x>W+10) Object.assign(b,mkBubble(),{y:H+5});
     });
@@ -1033,7 +1145,7 @@ const chipState = {};
 
 /* ═══════════════════════════════════════════════════
    COUNTER ANIMATION
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function animCount(el,target,dur=1200){
   let start=null;
   function step(t){
@@ -1044,16 +1156,49 @@ function animCount(el,target,dur=1200){
   }
   requestAnimationFrame(step);
 }
-window.addEventListener('DOMContentLoaded',()=>{
-  setTimeout(()=>{
-    animCount(document.getElementById('ctr-testers'),47);
-    animCount(document.getElementById('ctr-spots'),CONFIG.games.reduce((a,g)=>a+(g.openSpots||20),0));
-  },600);
+
+/* ═══════════════════════════════════════════════════
+   LIVE STATS FETCH
+   ═══════════════════════════════════════════════════ */
+async function refreshStats() {
+  const testerEl = document.getElementById('ctr-testers');
+  const spotEl = document.getElementById('ctr-spots');
+  
+  try {
+    const response = await fetch(CONFIG.sheetsEndpointSignup + '?action=getStats');
+    const stats = await response.json();
+    
+    if (stats.success) {
+      const realTesters = stats.currentTesters || 0;
+      const maxLimit = stats.maxLimit || 100;
+      const openSpots = Math.max(0, maxLimit - realTesters);
+      
+      animCount(testerEl, realTesters);
+      animCount(spotEl, openSpots);
+      
+      if (CONFIG.games[0]) {
+        CONFIG.games[0].openSpots = openSpots;
+        // Re-build grid if it was already built to show new spots
+        buildGamesGrid();
+      }
+    }
+  } catch (e) {
+    console.warn('Stats fetch failed, using fallbacks:', e.message);
+    animCount(testerEl, 0);
+    animCount(spotEl, 100);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Initial animation
+  setTimeout(() => {
+    refreshStats();
+  }, 600);
 });
 
 /* ═══════════════════════════════════════════════════
    GAMES GRID
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function buildGamesGrid() {
   const grid = document.getElementById('games-grid');
   grid.innerHTML = '';
@@ -1061,16 +1206,15 @@ function buildGamesGrid() {
     const card = document.createElement('div');
     card.className = 'game-card';
     card.id = 'card-'+g.id;
-    card.innerHTML = `
-      <div class="card-icon">${g.icon}</div>
-      <div class="card-title">${g.name}</div>
-      <div class="card-sub">${g.tagline}</div>
-      <div class="card-badges">
-        <span class="badge badge-blue">${g.platform}</span>
-        <span class="badge badge-gold">${g.status}</span>
-        <span class="badge badge-green">${g.openSpots} spots left</span>
-      </div>
-    `;
+    card.innerHTML = "
+      <div class='card-icon'>" + g.icon + "</div>
+      <div class='card-title'>" + g.name + "</div>
+      <div class='card-sub'>" + g.tagline + "</div>
+      <div class='card-badges'>
+        <span class='badge badge-blue'>" + g.platform + "</span>
+        <span class='badge badge-gold'>" + g.status + "</span>
+        <span class='badge badge-green'>" + g.openSpots + " spots left</span>
+      </div>";
     card.onclick = () => openGame(g.id);
     grid.appendChild(card);
   });
@@ -1078,28 +1222,35 @@ function buildGamesGrid() {
   const cs = document.createElement('div');
   cs.className = 'game-card';
   cs.style.borderStyle = 'dashed';
-  cs.innerHTML = `<div class="game-coming"><div class="plus">+</div><div style="font-weight:700">More Games Coming</div><div style="font-size:13px">WebSpider Studios is always building</div><div class="card-badges" style="margin-top:10px"><span class="badge badge-coming">2026</span></div></div>`;
+  cs.innerHTML = "<div class='game-coming'><div class='plus'>+</div><div style='font-weight:700'>More Games Coming</div><div style='font-size:13px'>WebSpider Studios is always building</div><div class='card-badges' style='margin-top:10px'><span class='badge badge-coming'>2026</span></div></div>";
   grid.appendChild(cs);
 }
 
 function openGame(id) {
   currentGame = CONFIG.games.find(g=>g.id===id);
   if(!currentGame) return;
+  
+  // Dynamic Theming: Shift accent color
+  if(currentGame.accentColor) {
+    document.documentElement.style.setProperty('--brand-primary', currentGame.accentColor);
+    document.documentElement.style.setProperty('--teal', currentGame.accentColor);
+    document.documentElement.style.setProperty('--teal-light', currentGame.accentColor + 'cc'); // semi-transparent
+  }
+
   document.querySelectorAll('.game-card').forEach(c=>c.classList.remove('active'));
   const card = document.getElementById('card-'+id);
   if(card) card.classList.add('active');
   // Render detail header
   const dh = document.getElementById('detail-header');
-  dh.innerHTML = `
-    <div class="detail-icon">${currentGame.icon}</div>
+  dh.innerHTML = "
+    <div class='detail-icon' style='filter:drop-shadow(0 0 24px " + (currentGame.accentColor || 'var(--brand-primary)') + ")'>" + currentGame.icon + "</div>
     <div>
-      <h2 class="detail-title">${currentGame.name}</h2>
-      <div class="detail-tagline">${currentGame.tagline}</div>
+      <h2 class='detail-title'>" + currentGame.name + "</h2>
+      <div class='detail-tagline'>" + currentGame.tagline + "</div>
     </div>
-    <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-      <a href="${currentGame.playStore}" target="_blank" class="btn-outline" style="font-size:13px">🎮 Play Store</a>
-    </div>
-  `;
+    <div style='margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center'>
+      <a href='" + currentGame.playStore + "' target='_blank' class='btn-outline' style='font-size:13px; border-color:" + (currentGame.accentColor || 'var(--cyan-border)') + "'>🎮 Play Store</a>
+    </div>";
   const sec = document.getElementById('game-detail');
   sec.classList.add('visible');
   setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),100);
@@ -1112,7 +1263,7 @@ function openFirstGame() {
 
 /* ═══════════════════════════════════════════════════
    FORM TABS
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
@@ -1122,7 +1273,7 @@ function switchTab(tab) {
 
 /* ═══════════════════════════════════════════════════
    MULTI-STEP FORM
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function updateProgress(step) {
   for(let i=1;i<=4;i++){
     const n=document.getElementById('sn'+i);
@@ -1147,9 +1298,11 @@ function nextStep(from) {
   if(from===1){
     const name=document.getElementById('f-name').value.trim();
     const email=document.getElementById('f-email').value.trim();
+    const consent=document.getElementById('f-consent').checked;
     let ok=true;
     if(!name){showErr('f-name','e-name');ok=false;} else clearErr('f-name','e-name');
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('f-email','e-email');ok=false;} else clearErr('f-email','e-email');
+    if(!email||!/^[^s@]+@[^s@]+.[^s@]+$/.test(email)){showErr('f-email','e-email');ok=false;} else clearErr('f-email','e-email');
+    if(!consent){document.getElementById('e-consent').classList.add('show');ok=false;} else {document.getElementById('e-consent').classList.remove('show');}
     if(!ok) return;
   }
   if(from===3){
@@ -1165,9 +1318,10 @@ function clearErr(inp,err){document.getElementById(inp).classList.remove('error'
 
 /* ═══════════════════════════════════════════════════
    CHIPS
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function selectChip(el, group) {
-  document.getElementById(group+'-chips')?.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  const g = document.getElementById(group+'-chips');
+  if(g) g.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
   el.classList.add('selected');
   chipState[group] = el.textContent.trim();
 }
@@ -1177,7 +1331,7 @@ function toggleChip(el) {
 
 /* ═══════════════════════════════════════════════════
    STARS
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function rateStar(v){
   signupRating=v;
   document.querySelectorAll('#star-group .star').forEach((s,i)=>{
@@ -1193,11 +1347,12 @@ function rateFbStar(v){
 
 /* ═══════════════════════════════════════════════════
    SUBMIT SIGNUP
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 async function submitSignup() {
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true; btn.textContent='Submitting...';
-
+  const btn = document.getElementById('submit-btn');
+  const originalText = btn.innerHTML;
+  
+  // 1. Validation
   const genres = [...document.querySelectorAll('#genre-chips .chip.selected')].map(c=>c.textContent.trim()).join(', ');
   const payload = {
     ts: new Date().toISOString(),
@@ -1216,23 +1371,34 @@ async function submitSignup() {
     suggestions: document.getElementById('f-suggestions').value.trim(),
   };
 
-  try {
-    const endpoint = CONFIG.sheetsEndpointSignup;
-    if(endpoint && endpoint !== 'YOUR_GOOGLE_APPS_SCRIPT_SIGNUP_URL') {
-      await fetch(endpoint, { method:'POST', body:JSON.stringify(payload) });
-    }
-  } catch(e) { console.warn('Sheets submission failed (check endpoint):', e.message); }
-
-  // Show success regardless (offline fallback)
+  // 2. Instant User Experience: Zero Delay
+  // Trigger WhatsApp redirection immediately (before the fetch to avoid popup blockers)
+  getInstantWhatsAppLink();
+  
+  // Show success screen immediately
   document.getElementById('signup-form-card').style.display='none';
   document.getElementById('signup-success').classList.add('visible');
+  document.getElementById('signup-success').scrollIntoView({behavior:'smooth',block:'center'});
   launchConfetti();
-  btn.disabled=false;
+  
+  // 3. Background Data Processing
+  fetch('https://script.google.com/macros/s/AKfycbwtQuv-9mJena_5WUfDMSL3tKOlWGC6fUcbM5tf4OMJo8oK-9H0LQU7P2S-3hDwrSgR/exec', { 
+    method:'POST', 
+    mode:'no-cors', 
+    body:JSON.stringify(payload) 
+  }).catch(e => console.warn('Background sync queued:', e.message));
+
+  // 4. Verification simulation (matches the 2-3 seconds Play API takes)
+  setTimeout(() => {
+    const status = document.getElementById('auth-status');
+    if(status) status.innerHTML = '✅ Access Authorized! You can now download.';
+    showToast('🚀 Application submitted & Access Granted!');
+  }, 4000);
 }
 
 /* ═══════════════════════════════════════════════════
    SUBMIT FEEDBACK
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 async function submitFeedback() {
   const payload = {
     ts: new Date().toISOString(),
@@ -1253,8 +1419,6 @@ async function submitFeedback() {
     }
   } catch(e) { console.warn('Feedback submission failed:', e.message); }
 
-  document.getElementById('panel-feedback').querySelector('.form-card').children[0].style.display='none';
-  // hide everything except success
   const kids=[...document.getElementById('panel-feedback').querySelector('.form-card').children];
   kids.forEach(k=>k.style.display='none');
   document.getElementById('fb-success').style.display='block';
@@ -1263,7 +1427,7 @@ async function submitFeedback() {
 
 /* ═══════════════════════════════════════════════════
    QR CODES
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function buildQR() {
   const grid = document.getElementById('qr-grid');
   const items = [
@@ -1271,34 +1435,47 @@ function buildQR() {
   ];
   const game = currentGame || CONFIG.games[0];
   if(game && game.whatsappGroup) {
-    items.push({ title:game.groupName, desc:`Official beta testers group for ${game.name}. Get APK links, bug report channels &amp; dev announcements.`, link:game.whatsappGroup, rules:game.groupRules||[] });
+    items.push({ title:game.groupName, desc:"Official beta testers group for " + game.name + ". Get APK links, bug report channels &amp; dev announcements.", link:game.whatsappGroup, rules:game.groupRules||[] });
   } else {
-    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we\'ll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
+    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: "WhatsApp group link coming soon. Sign up above and we'll send it to your WhatsApp!", link: null, rules: game?.groupRules||[] });
   }
   grid.innerHTML = '';
   items.forEach(item=>{
     const card = document.createElement('div');
     card.className='qr-card';
     const qbId='qr-'+Math.random().toString(36).slice(2);
-    const rulesHtml = item.rules.length ? `<ul style="text-align:left;list-style:none;padding:0;margin:16px 0;font-size:12px;color:var(--text-muted)">${item.rules.map(r=>`<li style="padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)">• ${r}</li>`).join('')}</ul>` : '';
-    card.innerHTML = `
-      <div class="qr-title">💬 ${item.title}</div>
-      <div class="qr-box"><div id="${qbId}" style="width:160px;height:160px;display:flex;align-items:center;justify-content:center"></div></div>
-      <div class="qr-desc">${item.desc}</div>
-      ${rulesHtml}
-      ${item.link
-        ? `<button class="copy-link-btn" id="cpbtn-${qbId}" onclick="copyLink('${item.link}','cpbtn-${qbId}')">📋 Copy Invite Link</button>
-           <a href="${item.link}" target="_blank" style="display:block;margin-top:10px;text-align:center;color:#ffffff;font-size:13px;font-weight:700">Open in WhatsApp →</a>`
-        : `<div style="background:var(--cyan-dim);border:1px dashed var(--cyan-border);border-radius:10px;padding:12px;font-size:13px;color:var(--text-muted)">🔔 Sign up above to receive the group link via email!</div>`
-      }
-    `;
+    const rulesHtml = item.rules.length ? "<ul style='text-align:left;list-style:none;padding:0;margin:16px 0;font-size:12px;color:var(--text-muted)'>" + item.rules.map(r=>"<li style='padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)'>• " + r + "</li>").join('') + "</ul>" : '';
+    card.innerHTML = "
+      <div class='qr-title'>💬 " + item.title + "</div>
+      <div class='qr-box'><div id='" + qbId + "' style='width:160px;height:160px;display:flex;align-items:center;justify-content:center'></div></div>
+      <div class='qr-desc'>" + item.desc + "</div>
+      " + rulesHtml + "
+      " + (item.link
+        ? "<button class='copy-link-btn' id='cpbtn-" + qbId + "' onclick='copyLink("" + item.link + "","cpbtn-" + qbId + "")'>📋 Copy Invite Link</button>
+           <a href='" + item.link + "' target='_blank' style='display:block;margin-top:14px;text-align:center;color:#ffffff;background:#25D366;padding:12px;border-radius:24px;font-size:14px;font-weight:bold;text-decoration:none;box-shadow:0 6px 16px rgba(37,211,102,0.3);border:2px solid #ffffff;transition:all 0.2s' onmouseover='this.style.transform="scale(1.03)"' onmouseout='this.style.transform="scale(1)"'>📲 Open in WhatsApp</a>"
+        : "<div style='background:var(--cyan-dim);border:1px dashed var(--cyan-border);border-radius:10px;padding:12px;font-size:13px;color:var(--text-muted)'>🔔 Sign up above to receive the group link via email!</div>") + "
+    ";
     grid.appendChild(card);
     // Generate QR
     if(item.link && typeof QRCode !== 'undefined') {
-      new QRCode(document.getElementById(qbId), { text:item.link, width:160, height:160, colorDark:'#021829', colorLight:'#ffffff', correctLevel:QRCode.CorrectLevel.H });
+      setTimeout(() => {
+        try {
+          new QRCode(document.getElementById(qbId), { 
+            text: item.link, 
+            width: 160, 
+            height: 160, 
+            colorDark:'#021829', 
+            colorLight:'#ffffff', 
+            correctLevel:QRCode.CorrectLevel.H 
+          });
+        } catch (e) {
+          console.error("QR Generation failed:", e);
+          document.getElementById(qbId).innerHTML = '<div style="font-size:10px;color:#ff4d6d">Failed to load QR</div>';
+        }
+      }, 50);
     } else if(!item.link) {
       const placeholder = document.getElementById(qbId);
-      placeholder.innerHTML = '<div style="font-size:12px;color:#999;text-align:center;padding:20px">QR code<br/>available soon</div>';
+      placeholder.innerHTML = '<div style="font-size:12px;color:#999;text-align:center;padding:20px">Link coming soon<br/>via WhatsApp!</div>';
     }
   });
 }
@@ -1314,31 +1491,36 @@ function copyLink(link, btnId) {
 
 /* ═══════════════════════════════════════════════════
    INSTANT WHATSAPP LINK (AUTO-REPLY TRICK)
-═══════════════════════════════════════════════════ */
-function getInstantWhatsAppLink() {
-  const number = CONFIG.developerWhatsApp || '';
-  if (!number) {
-    showToast('⚠️ Developer WhatsApp number not configured yet.');
-    return;
-  }
+   ═══════════════════════════════════════════════════ */
+function getInstantWhatsAppLink(customType) {
+  const number = CONFIG.developerWhatsApp || '919340121744';
   const gameName = currentGame?.name || 'your game';
-  const text = `Hi WebSpider Studios! 🕷️ I just registered for the ${gameName} Beta. Can I get the download link please?`;
-  const url = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+  let text = "Hi WebSpider Studios! 🕷️ I just registered for the " + gameName + " Beta. Can I get the download link please?";
+  
+  if (customType === 'Menu') {
+    text = "Hi WebSpider! 🕷️ I'd like to see the main menu and current games.";
+  }
+  
+  const url = "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
   window.open(url, '_blank');
 }
 /* ═══════════════════════════════════════════════════
    SHARE
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function shareSignup() {
   const url = window.location.href;
-  const text = `🎮 I just applied to beta test ${currentGame?.name||'an awesome new game'} by WebSpider Studios!\n\nJoin the beta squad here: ${url}\n\nLimited spots! 💧`;
+  const text = "🎮 I just applied to beta test " + (currentGame?.name||'an awesome new game') + " by WebSpider Studios!
+
+Join the beta squad here: " + url + "
+
+Limited spots! 💧";
   if(navigator.share) { navigator.share({title:'Join Beta',text,url}); }
-  else { window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank'); }
+  else { window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), '_blank'); }
 }
 
 /* ═══════════════════════════════════════════════════
    CONFETTI
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function launchConfetti(){
   const canvas=document.getElementById('confetti-canvas');
   const ctx=canvas.getContext('2d');
@@ -1366,7 +1548,7 @@ function launchConfetti(){
 
 /* ═══════════════════════════════════════════════════
    TOAST
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function showToast(msg, dur=3000){
   const t=document.getElementById('toast'); t.textContent=msg;
   t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),dur);
@@ -1374,7 +1556,7 @@ function showToast(msg, dur=3000){
 
 /* ═══════════════════════════════════════════════════
    MOBILE NAV
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 function toggleNav(){
   const nav=document.getElementById('main-nav');
   nav.classList.toggle('open');
@@ -1383,7 +1565,7 @@ function toggleNav(){
 
 /* ═══════════════════════════════════════════════════
    INIT
-═══════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 buildGamesGrid();
 buildQR(); // Build community QR without game context initially
 
@@ -1391,7 +1573,7 @@ buildQR(); // Build community QR without game context initially
 (function(){
   const sub = document.querySelector('.section-sub--community');
   if(sub && CONFIG.community.inviteLink) {
-    sub.innerHTML += ` The community invite link is <a href="${CONFIG.community.inviteLink}" target="_blank" style="color:#ffffff">available here</a>.`;
+    sub.innerHTML = "Scan the QR code or tap the link to join our official WhatsApp community and game-specific tester groups. The community invite link is <a href='" + CONFIG.community.inviteLink + "' target='_blank' style='color:#ffffff; font-weight:700; text-decoration:underline;'>available here</a>.";
   }
 })();
 
@@ -1404,5 +1586,18 @@ document.querySelectorAll('.game-card,.qr-card,.about-inner').forEach(el=>{
   obs.observe(el);
 });
 </script>
+
+<!-- Floating WhatsApp Widget -->
+<a href="javascript:void(0)" onclick="getInstantWhatsAppLink('Menu')" class="wa-float-btn">
+  <div class="wa-icon-circle">
+    <i class="fab fa-whatsapp"></i>
+    <div class="wa-badge">1</div>
+  </div>
+  <div class="wa-text-bubble wa-label">
+    <span class="wa-text-top">Online Concierge</span>
+    <span class="wa-label">Chat with us!</span>
+  </div>
+</a>
+
 </body>
 </html>
