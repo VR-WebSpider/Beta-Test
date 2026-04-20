@@ -254,7 +254,6 @@ function handleSignup(data) {
   const pkg = gameInfo.packageName || CONFIG.PLAY_API.PACKAGE_NAME;
   addTesterToPlayConsole(data.email, pkg);
 }
-}
 
 function handleWhatsAppIncoming(data) {
   const entry = data.entry[0];
@@ -298,7 +297,7 @@ function handleWhatsAppIncoming(data) {
     }
     else if (text.includes('status') || text.includes('tester')) {
       const stats = getStats();
-      const msg = \`📊 *Beta Hub Status*\\n\\n• Current Testers: *\${stats.currentTesters}*\\n• Spots Remaining: *\${stats.maxLimit - stats.currentTesters}*\\n\\nStatus: *Active & Recruiting*\`;
+      const msg = `📊 *Beta Hub Status*\n\n• Current Testers: *${stats.currentTesters}*\n• Spots Remaining: *${stats.maxLimit - stats.currentTesters}*\n\nStatus: *Active & Recruiting*`;
       callWhatsAppApi(from, msg);
     }
     else {
@@ -320,23 +319,23 @@ function handleInteractiveSelection(from, id) {
       sendWhatsAppInteractiveMenu(from);
       break;
     case 'menu_website':
-      callWhatsAppApi(from, "🌐 *WebSpider Studios — Official Website*\\n\\nExplore our legacy, our mission, and our upcoming AI-first projects here:\\n\\n👉 https://vr-webspider.github.io/\\n\\n_Reply 'Menu' to go back._");
+      callWhatsAppApi(from, "🌐 *WebSpider Studios — Official Website*\n\nExplore our legacy, our mission, and our upcoming AI-first projects here:\n\n👉 https://vr-webspider.github.io/\n\n_Reply 'Menu' to go back._");
       break;
     case 'menu_games':
-      const gameList = Object.keys(CONFIG.GAMES).map(g => \`• *\${g}*\`).join('\\n');
-      callWhatsAppApi(from, \`🎮 *Active Beta Projects*\\n\\nWe are currently testing several titles. Our flagship is Aqua Sort:\\n\\n\${gameList}\\n\\n👉 Jump in: \${CONFIG.OFFICIAL_WEBSITE}#games\\n\\n_Reply 'Menu' to go back._\`);
+      const gameList = Object.keys(CONFIG.GAMES).map(g => `• *${g}*`).join('\n');
+      callWhatsAppApi(from, `🎮 *Active Beta Projects*\n\nWe are currently testing several titles. Our flagship is Aqua Sort:\n\n${gameList}\n\n👉 Jump in: ${CONFIG.OFFICIAL_WEBSITE}#games\n\n_Reply 'Menu' to go back._`);
       break;
     case 'menu_plan':
-      callWhatsAppApi(from, \`🛡️ *The Beta Hub Testers Plan*\\n\\nOur goal is to reach 200 dedicated testers. As a tester, you get:\\n\\n✅ Early access to all builds\\n✅ Direct reach to developers\\n✅ Exclusive in-game rewards\\n\\n👉 Join here: \${CONFIG.OFFICIAL_WEBSITE}\`);
+      callWhatsAppApi(from, "🛡️ *The Beta Hub Testers Plan*\n\nOur goal is to reach 200 dedicated testers. As a tester, you get:\n\n✅ Early access to all builds\n✅ Direct reach to developers\n✅ Exclusive in-game rewards\n\n👉 Join here: ${CONFIG.OFFICIAL_WEBSITE}");
       break;
     case 'menu_socials':
-      callWhatsAppApi(from, \`📱 *Find us on Platforms*\\n\\n• *Play Store:* \${CONFIG.PLAY_STORE_URL}\\n• *Instagram:* @WebSpider.VR\\n• *YouTube:* WebSpider Studios\`);
+      callWhatsAppApi(from, "📱 *Find us on Platforms*\n\n• *Play Store:* ${CONFIG.PLAY_STORE_URL}\n• *Instagram:* @WebSpider.VR\n• *YouTube:* WebSpider Studios");
       break;
     case 'help_install':
-      callWhatsAppApi(from, "❓ *How to Install*\\n\\n1. Click the link we sent (Google Play).\\n2. Tap 'Become a Tester'.\\n3. Download the app directly from the Play Store!\\n\\n_Still stuck? Reply 'Dev' to talk to us._");
+      callWhatsAppApi(from, "❓ *How to Install*\n\n1. Click the link we sent (Google Play).\n2. Tap 'Become a Tester'.\n3. Download the app directly from the Play Store!\n\n_Still stuck? Reply 'Dev' to talk to us._");
       break;
     case 'contact_dev':
-      callWhatsAppApi(from, "👨‍💻 *Direct Support*\\n\\nYou can reach our lead developer at webspiderstudios@gmail.com or wait for a manual response here. We usually reply within 24 hours!");
+      callWhatsAppApi(from, "👨‍💻 *Direct Support*\n\nYou can reach our lead developer at webspiderstudios@gmail.com or wait for a manual response here. We usually reply within 24 hours!");
       break;
     default:
       sendWhatsAppInteractiveMenu(from);
@@ -347,15 +346,15 @@ function handleInteractiveSelection(from, id) {
 
 function sendWelcomeEmail(email, name, downloadUrl, gameName) {
   const firstName = name ? name.split(' ')[0] : 'Tester';
-  const subject = \`🕸️ Welcome to the WebSpider Studios Beta Squad!\`;
+  const subject = `🕸️ Welcome to the WebSpider Studios Beta Squad!`;
   const gameTitle = gameName || 'our latest titles';
   
-  const htmlBody = \`
-    <div style="background-color: \${CONFIG.BG_COLOR}; padding: 40px 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff;">
+  const htmlBody = `
+    <div style="background-color: ${CONFIG.BG_COLOR}; padding: 40px 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff;">
       <div style="max-width: 600px; margin: 0 auto; background: #2d2e32; border-radius: 16px; overflow: hidden; border: 1px solid #3d3e42;">
-        <div style="background: \${CONFIG.ACCENT_COLOR}; padding: 40px; text-align: center;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: 1px;">Hi, \${firstName}! 👋</h1>
-          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">You're officially a Beta Tester for <strong>\${gameTitle}</strong>.</p>
+        <div style="background: ${CONFIG.ACCENT_COLOR}; padding: 40px; text-align: center;">
+          <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: 1px;">Hi, ${firstName}! 👋</h1>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">You're officially a Beta Tester for <strong>${gameTitle}</strong>.</p>
         </div>
         
         <div style="padding: 40px;">
@@ -364,7 +363,7 @@ function sendWelcomeEmail(email, name, downloadUrl, gameName) {
           </p>
           
           <div style="margin: 35px 0; text-align: center;">
-            <a href="\${downloadUrl}" style="display: inline-block; background: \${CONFIG.ACCENT_COLOR}; color: white; padding: 18px 36px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 10px 20px rgba(52, 168, 83, 0.3);">🚀 Download Beta App</a>
+            <a href="${downloadUrl}" style="display: inline-block; background: ${CONFIG.ACCENT_COLOR}; color: white; padding: 18px 36px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 10px 20px rgba(52, 168, 83, 0.3);">🚀 Download Beta App</a>
           </div>
 
           <p style="font-size: 13px; color: #888; text-align: center;">
@@ -375,15 +374,15 @@ function sendWelcomeEmail(email, name, downloadUrl, gameName) {
           
           <div style="text-align: center;">
             <p style="font-size: 14px; color: #888;">Follow our journey</p>
-            <a href="\${CONFIG.OFFICIAL_WEBSITE}" style="color: \${CONFIG.ACCENT_COLOR}; text-decoration: none; font-weight: bold;">Official Website</a>
+            <a href="${CONFIG.OFFICIAL_WEBSITE}" style="color: ${CONFIG.ACCENT_COLOR}; text-decoration: none; font-weight: bold;">Official Website</a>
           </div>
         </div>
       </div>
       <p style="text-align: center; color: #666; font-size: 12px; margin-top: 25px;">
-        © 2026 \${CONFIG.STUDIO_NAME} • Built with 💧 and Passion • India
+        © 2026 ${CONFIG.STUDIO_NAME} • Built with 💧 and Passion • India
       </p>
     </div>
-  \`;
+  `;
 
   MailApp.sendEmail({
     to: email,
@@ -395,7 +394,7 @@ function sendWelcomeEmail(email, name, downloadUrl, gameName) {
 /* ─── WHATSAPP ENGINE ──────────────────────────────────── */
 
 function sendWhatsAppNotification(phone, name, downloadUrl) {
-  const message = \`Hi \${name}! 🕸️\\n\\nWelcome to the WebSpider Studios Beta Squad! You're now authorized to download the build.\`;
+  const message = `Hi ${name}! 🕸️\n\nWelcome to the WebSpider Studios Beta Squad! You're now authorized to download the build.`;
   
   sendWhatsAppButtons(phone, "🚀 Welcome!", message, [
     { id: 'menu_games', title: '🎮 Download App' },
@@ -412,7 +411,7 @@ function sendWhatsAppInteractiveMenu(phone) {
     interactive: {
       type: "list",
       header: { type: "text", text: "WebSpider Studios" },
-      body: { text: "🌟 *AI-First Game Studio* 🌟\\n\\nWelcome! I am your virtual concierge. How can I help you today?" },
+      body: { text: "🌟 *AI-First Game Studio* 🌟\n\nWelcome! I am your virtual concierge. How can I help you today?" },
       footer: { text: "Select an option below 🕷️💧" },
       action: {
         button: "View Options",
@@ -468,11 +467,11 @@ function sendWhatsAppButtons(phone, header, body, buttons) {
 function callWhatsAppApiRaw(payload) {
   if (CONFIG.WHATSAPP_TOKEN === 'YOUR_META_ACCESS_TOKEN') return;
 
-  const url = \`https://graph.facebook.com/v17.0/\${CONFIG.WHATSAPP_PHONE_ID}/messages\`;
+  const url = `https://graph.facebook.com/v17.0/${CONFIG.WHATSAPP_PHONE_ID}/messages`;
   const options = {
     method: "POST",
     headers: {
-      "Authorization": \`Bearer \${CONFIG.WHATSAPP_TOKEN}\`,
+      "Authorization": `Bearer ${CONFIG.WHATSAPP_TOKEN}`,
       "Content-Type": "application/json"
     },
     payload: JSON.stringify(payload)
@@ -488,7 +487,7 @@ function callWhatsAppApiRaw(payload) {
 function callWhatsAppApi(phone, text) {
   if (CONFIG.WHATSAPP_TOKEN === 'YOUR_META_ACCESS_TOKEN') return;
 
-  const url = \`https://graph.facebook.com/v17.0/\${CONFIG.WHATSAPP_PHONE_ID}/messages\`;
+  const url = `https://graph.facebook.com/v17.0/${CONFIG.WHATSAPP_PHONE_ID}/messages`;
   const payload = {
     messaging_product: "whatsapp",
     to: phone.replace('+', ''),
@@ -499,7 +498,7 @@ function callWhatsAppApi(phone, text) {
   const options = {
     method: "POST",
     headers: {
-      "Authorization": \`Bearer \${CONFIG.WHATSAPP_TOKEN}\`,
+      "Authorization": `Bearer ${CONFIG.WHATSAPP_TOKEN}`,
       "Content-Type": "application/json"
     },
     payload: JSON.stringify(payload)
@@ -522,18 +521,18 @@ function addTesterToPlayConsole(email, packageName) {
     const pkg = packageName || CONFIG.PLAY_API.PACKAGE_NAME;
     
     // 1. Create a new Edit (session)
-    const editUrl = \`https://androidpublisher.googleapis.com/androidpublisher/v3/applications/\${packageName}/edits\`;
+    const editUrl = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${packageName}/edits`;
     const editResponse = UrlFetchApp.fetch(editUrl, {
       method: 'POST',
-      headers: { 'Authorization': \`Bearer \${token}\` }
+      headers: { 'Authorization': `Bearer ${token}` }
     });
     const editId = JSON.parse(editResponse.getContentText()).id;
 
     // 2. Get current testers to avoid overwriting or to find the right list
-    const testersUrl = \`\${editUrl}/\${editId}/testers/\${CONFIG.PLAY_API.TRACK}\`;
+    const testersUrl = `${editUrl}/${editId}/testers/${CONFIG.PLAY_API.TRACK}`;
     const testersResponse = UrlFetchApp.fetch(testersUrl, {
       method: 'GET',
-      headers: { 'Authorization': \`Bearer \${token}\` }
+      headers: { 'Authorization': `Bearer ${token}` }
     });
     const testersData = JSON.parse(testersResponse.getContentText());
 
@@ -547,19 +546,19 @@ function addTesterToPlayConsole(email, packageName) {
     // 4. Update the testers for this edit
     UrlFetchApp.fetch(testersUrl, {
       method: 'PATCH',
-      headers: { 'Authorization': \`Bearer \${token}\`, 'Content-Type': 'application/json' },
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
       payload: JSON.stringify(testersData)
     });
 
     // 5. Commit changes
-    UrlFetchApp.fetch(\`\${editUrl}/\${editId}:commit\`, {
+    UrlFetchApp.fetch(`${editUrl}/${editId}:commit`, {
       method: 'POST',
-      headers: { 'Authorization': \`Bearer \${token}\` }
+      headers: { 'Authorization': `Bearer ${token}` }
     });
 
-    Logger.log(\`Successfully added \${email} to \${CONFIG.PLAY_API.TRACK} testers.\`);
+    Logger.log(`Successfully added ${email} to ${CONFIG.PLAY_API.TRACK} testers.`);
   } catch (err) {
-    Logger.log(\`Play API Error: \${err.message}\`);
+    Logger.log(`Play API Error: ${err.message}`);
   }
 }
 
