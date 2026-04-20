@@ -1303,7 +1303,7 @@ function nextStep(from) {
     const consent=document.getElementById('f-consent').checked;
     let ok=true;
     if(!name){showErr('f-name','e-name');ok=false;} else clearErr('f-name','e-name');
-    if(!email||!/^[^s@]+@[^s@]+.[^s@]+$/.test(email)){showErr('f-email','e-email');ok=false;} else clearErr('f-email','e-email');
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('f-email','e-email');ok=false;} else clearErr('f-email','e-email');
     if(!consent){document.getElementById('e-consent').classList.add('show');ok=false;} else {document.getElementById('e-consent').classList.remove('show');}
     if(!ok) return;
   }
