@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/VR-WebSpider/Beta-Test/main/studio_logo_white.png" alt="Logo" width="100" style="background:#15d6c8; padding:20px; border-radius:20px;" />
 
-  <h1>🕸️ WebSpider Studios — Beta Hub</h1>
+  <h1>🕷️ WebSpider Studios — Beta Hub</h1>
 
   <strong>The Official Early-Access Platform & Tester Gateway for WebSpider Studios!</strong>
 
@@ -38,8 +38,15 @@ The architecture utilizes a decentralized, serverless data collection methodolog
 1. Gamers utilize the 4-step glass form on `index.html`.
 2. The payload is securely mapped to our `google-apps-script.js` Google Cloud endpoint.
 3. Telemetry immediately lands inside an encrypted central Google Sheet for review. 
+4. **Interactive Concierge:** New beta testers are immediately greeted on WhatsApp by our branded virtual concierge, providing instant download links and categorized support menus.
 
+## 🤖 AI-First Communication Suite
+We've recently upgraded our backend to a state-of-the-art **Interactive WhatsApp Engine**:
+* **List Menus:** Users can navigate our ecosystem via professional, categorized selection menus (Website, Games, Career, Support).
+* **Smart Routing:** The concierge detects keywords like "link", "status", or "install" to provide contextual help instantly.
+* **Live Stats:** Testers can ask for "status" to get real-time availability of open beta spots directly from our database.
+* **One-Tap Access:** Action buttons for downloads and help tickets ensure a frictionless onboarding experience.
 ---
 <div align="center">
-  <i>© 2026 WebSpider Studios • All Rights Reserved</i>
+  <i>© 2026 WebSpider Studios — All Rights Reserved</i>
 </div>
