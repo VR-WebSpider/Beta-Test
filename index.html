@@ -1079,7 +1079,7 @@ const CONFIG = {
         '✅ Test at least 3 new levels per week',
         '✅ Report bugs with device info + screenshot',
         '✅ Be honest — we want your raw feedback!',
-        '✅ Don't share APK links publicly (NDA)',
+        '✅ Don\'t share APK links publicly (NDA)',
         '✓ Respect all community members',
         '🎁 Complete testing = bonus 500 in-game coins on launch!',
       ]
@@ -1440,7 +1440,7 @@ function buildQR() {
   if(game && game.whatsappGroup) {
     items.push({ title:game.groupName, desc:`Official beta testers group for ${game.name}. Get APK links, bug report channels &amp; dev announcements.`, link:game.whatsappGroup, rules:game.groupRules||[] });
   } else {
-    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we'll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
+    items.push({ title: game?.groupName || 'Aqua Sort Beta Testers', desc: 'WhatsApp group link coming soon. Sign up above and we\'ll send it to your WhatsApp!', link: null, rules: game?.groupRules||[] });
   }
   grid.innerHTML = '';
   items.forEach(item=>{
