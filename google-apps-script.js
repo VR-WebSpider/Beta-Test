@@ -1,115 +1,507 @@
 /**
- * Aqua Sort Beta Tester Sign-up — Google Apps Script Backend
- * 
- * HOW TO DEPLOY:
- * 1. Go to https://script.google.com
- * 2. Create a new project, paste this code
- * 3. Click "Deploy" > "New Deployment"
- * 4. Type: "Web App", Execute as: "Me", Who has access: "Anyone"
- * 5. Copy the Web App URL
- * 6. Paste the URL into index.html where it says YOUR_GOOGLE_APPS_SCRIPT_URL_HERE
+ * 🕷️ WebSpider Studios — Beta Hub & Automation
+ * Handles: Google Sheets logging, Branded Email, and WhatsApp Automation
  */
 
-const SHEET_NAME = 'Beta Testers';
-const SPREADSHEET_ID = ''; // Leave empty to auto-create, or paste your Google Sheet ID here
+/* ─── CONFIGURATION ────────────────────── */
+const CONFIG = {
+  // Database
+  SHEET_NAME: 'Beta Testers',
+  SPREADSHEET_ID: '17XY3eFn8NSeZqkcbkg1m8pG06Rs151VZRwNe-N3D2SY', 
+  
+  // Branding & Links
+  ACCENT_COLOR: '#34A853', // Vibrant Green
+  BG_COLOR: '#202124',     // Deep Charcoal Black
+  STUDIO_NAME: 'WebSpider Studios',
+  PLAY_STORE_URL: 'https://play.google.com/store/apps/dev?id=6238970757255055559&hl=en_IN',
+  OFFICIAL_WEBSITE: 'https://vr-webspider.github.io/',
+  
+  // WhatsApp Meta Cloud API (Live Credentials)
+  WHATSAPP_TOKEN: 'EAAR6W8NutcEBRCN6l1gSEPmuWSagArr1dLL6SwaAt78O6hHhZCnXG3pP1ZAnf1V1rU4fL835p3IY7ZBmOofDAt2jIbe819pI6ZCrwN8dJpRZAdhNf7gUZCHxZA0OqjK8PCD1ZB9ZCsF2FzL73g6ZAgV7QvOZCz7vIdpZAizn8f6ZCQZAYZA9V7v2',
+  WHATSAPP_PHONE_ID: '1039591709241132',
+  WEBHOOK_VERIFY_TOKEN: 'webspider_secure_trigger_2026',
 
+  // Google Play Console Automation (Setup required)
+  PLAY_API: {
+    PACKAGE_NAME: 'com.webspider.aquasort.mobile',
+    TRACK: 'alpha', // Change to 'internal' if using internal testing
+    LIST_NAME: 'Beta Hub Testers', // Updated per user request
+    SERVICE_ACCOUNT_EMAIL: 'play-console-bot@webspider-play-automation.iam.gserviceaccount.com',
+    PRIVATE_KEY: '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBdlvclJDw5qW1\ngywOjQ+1r4Ovq6KJQ1K5J86319vxL/47\nm3dkBt3pg3ceAX1lRjKmltorOZyZ3dLp\nmW00A2ObuqUOHqCAJW+V5sMSs8JTvg/vrsfRMcGsAntgKqIwRs/6UgpdPXE/mYy8\nI4Bd8rDM4mgoKVKgi7miXtScXZSA6VZCpjiqVBkLowr1ld\npo89Sc5UjgYh0+shO7V\nNFJMkFouWt4CexbXOaXcl/A4w60hj8UnJ88DpjH+pA7zH/xZyc+RLmBS8ADAetzo\nq4GdOuJPeS+dANlT6s9AMQ2Jpx5Tr9X/CIaNTd88njd+JDL3DX89DfTf9r\b+jLeZ\nuqoI+bhrAgMBAAECggEAGivqrx39Ykw0Lv3Q8sz8ID40szSltypU4WMfEM7SXGqm\nMCZ5fHN+B3jh9JILW9fRwqiWA2f2pU1qxXBHONSb3+AxiQX1UjCo9knyqi/dl5pB\f1Fmi\nwh5+feXUiyiUU6bFHLkdQr6rDnCXgdIIS1+OSazJCURnlIYqacTiG2+c8Eg\n+Uzs94QJWV9ZHLRS6tLr2FOg7qaMCIFK6J76dNwbDL9Mq0JUtxzduHoCteTw81nn\nBrDGcM+uDLxjBT4LW8\IkqJpe7iDjN5ACUU3mBLki7BCm5izceL2IgcsrajcMOVuc\n3dH1fuAGUJL0SHh5DgdwKTmLc9tOEOpQjd97TK+CJQKBgQDkqxLnAsVWckpZ1ZlY\eayOCIS/06VLDFbgpBfdhtWomJ7T+Ve\n8vGXF4ZtdKnPtaGu0GA8N/axnRps6jl4l\DmBVARWCs1Ky0UQb/8yQtbQ6vcBVN/1dA/5urOuFC15JRU+0wAQjJOVME60nygu6\i0e9XtfMzm4Uj8NDOz5w6kIjFwKBgQDYlgiXaIiFsx3N\P0YeC41voycb95wFH+wy\n+KjAkGQHPxwApRTvPFH2Qw52O1yRrHqKdfWpkw4Um3velSs8e5NHDrGFgchHkGuy\n+mRFau5g7QDLwo+Nr+h9wiPdJLS+ipD6zlVFr5lVkSI9ShzOQtydrGa20\vHcldMN\MZQ1V5i5zQKBgQCwUEgO31ARS6aQheXrFkY6bc8Nqb81kpoaM+xC3wg3KxasEwHX\ngNxoK4CD4Yvpbi49ep+BBoxu8pfBiwgtNPzx/zoorcOE/B6QggqfUnIYPFOgLzVQK\OF4i\MCqZNx7IGC1RDQ0jm/tBIZrNpzhL6cCy/0IdpL20FPVWDYQjxDyimQKBgCUu\pKzxmjZxyJT63tu7mf1nYghwGs3abB9YBwiAAVwpHnKR5KUpktyXKH1ttXegx6zL\kXAaOdmZ08sjireoc\n2FIiXtlC3AVwBeK2vn74I6tQWy5qxFk+KHWWXfWnFz1xuv3\zjXXbph9AQbKmWVjnyJGfZ+3WSRIaGIkd9AsiKClAoGAMFbf93WPge8oEDzbTrqS\G1kcGoQhZvq/h/aOrbnBGvC6ptl3T\P0onwjDacJwt79Ekzfw7IOudhx+iX5JGqE\f5jeEEt6zQMWHV8Wqg7a64daXuUJ1141yb+2LelGDHbJwIeiubqKhnFKiMk1xQvL\IMJ6k0v8Oe0C/hPPcPnf/iU=\n-----END PRIVATE KEY-----'
+  },
+
+  // Game Specific Database
+  GAMES: {
+    'Aqua Sort': {
+      packageName: 'com.webspider.aquasort.mobile',
+      testingUrl: 'https://play.google.com/apps/testing/com.webspider.aquasort.mobile'
+    }
+  }
+};
+
+
+/* ─── CORE HANDLERS ────────────────────── */
+
+/**
+ * Handles Webhooks and Signup Form POSTs
+ */
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const ss = SPREADSHEET_ID
-      ? SpreadsheetApp.openById(SPREADSHEET_ID)
-      : SpreadsheetApp.getActiveSpreadsheet();
+    const postData = JSON.parse(e.postData.contents);
     
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    
-    // Create sheet with headers if it doesn't exist
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow([
-        'Timestamp', 'Name', 'Email', 'WhatsApp', 'Device',
-        'Play Frequency', 'Hours/Week', 'Source', 'Genres',
-        'Excitement (1-5)', 'Favorite Feature', 'Motivation', 'Suggestions'
-      ]);
-      sheet.getRange(1, 1, 1, 13).setFontWeight('bold').setBackground('#00d4e8');
+    // 1. Detect if it's a Signup Form Submission (from index.html)
+    if (postData.email && postData.name) {
+      handleSignup(postData);
+      return createJsonResponse({ success: true });
     }
     
-    // Append the row
-    sheet.appendRow([
-      data.ts || new Date().toISOString(),
-      data.name || '',
-      data.email || '',
-      data.phone || '',
-      data.device || '',
-      data.freq || '',
-      data.hours || '',
-      data.source || '',
-      data.genres || '',
-      data.excitement || '',
-      data.feature || '',
-      data.motivation || '',
-      data.suggestions || ''
-    ]);
-
-    // Optional: Send welcome email
-    if (data.email) {
-      sendWelcomeEmail(data.email, data.name);
+    // 2. Detect if it's an Incoming WhatsApp Message (Webhook)
+    if (postData.object === 'whatsapp_business_account') {
+      handleWhatsAppIncoming(postData);
+      return createJsonResponse({ success: true });
     }
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON);
-
+    return createJsonResponse({ success: false, error: 'Unknown request type' });
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false, error: err.message }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return createJsonResponse({ success: false, error: err.message });
   }
 }
 
+/**
+ * Handles Webhook Verification from Meta
+ */
 function doGet(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'Aqua Sort Beta Signup API is running 🎮' }))
-    .setMimeType(ContentService.MimeType.JSON);
+  const params = e.parameter;
+  
+  // 1. Handle Stats Request (Dynamic Counter)
+  if (params.action === 'getStats') {
+    return createJsonResponse(getStats());
+  }
+
+  // 2. Handle Meta Webhook Verification
+  const mode = params['hub.mode'];
+  const token = params['hub.verify_token'];
+  const challenge = params['hub.challenge'];
+
+  if (mode === 'subscribe' && token === CONFIG.WEBHOOK_VERIFY_TOKEN) {
+    return ContentService.createTextOutput(challenge).setMimeType(ContentService.MimeType.TEXT);
+  }
+  
+  return ContentService.createTextOutput("🚀 WebSpider Studios API is Active").setMimeType(ContentService.MimeType.TEXT);
 }
 
-function sendWelcomeEmail(email, name) {
-  const firstName = name ? name.split(' ')[0] : 'Tester';
-  const subject = '🎉 Your Aqua Sort Beta Access is Here!';
+/* ─── LOGIC HANDLERS ────────────────────── */
+
+function handleSignup(data) {
+  const ss = CONFIG.SPREADSHEET_ID ? SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
   
-  const playStoreLink = 'https://play.google.com/apps/testing/com.webspiderstudios.aquasort';
-  const whatsappLink = 'https://chat.whatsapp.com/ImE2kPTV4JUAvm3D3YNADp';
+  if (!sheet) {
+    sheet = ss.insertSheet(CONFIG.SHEET_NAME);
+    sheet.appendRow(['Timestamp', 'Name', 'Email', 'WhatsApp', 'Device', 'Game', 'Frequency', 'Hours', 'Source', 'Genres', 'Excitement', 'Feature', 'Motivation', 'Suggestions']);
+    sheet.getRange(1, 1, 1, 14).setFontWeight('bold').setBackground(CONFIG.ACCENT_COLOR).setFontColor('#ffffff');
+  }
+  
+  sheet.appendRow([
+    data.ts || new Date().toISOString(),
+    data.name,
+    data.email,
+    data.phone || '',
+    data.device || '',
+    data.game || 'Beta Hub',
+    data.freq || '',
+    data.hours || '',
+    data.source || '',
+    data.genres || '',
+    data.excitement || '',
+    data.feature || '',
+    data.motivation || '',
+    data.suggestions || ''
+  ]);
+
+  // Send Notifications
+  const gameInfo = CONFIG.GAMES[data.game] || { testingUrl: CONFIG.PLAY_STORE_URL };
+  
+  sendWelcomeEmail(data.email, data.name, gameInfo.testingUrl, data.game);
+  if (data.phone) sendWhatsAppNotification(data.phone, data.name, gameInfo.testingUrl);
+
+  // 🛡️ Play Console Automation
+  const pkg = gameInfo.packageName || CONFIG.PLAY_API.PACKAGE_NAME;
+  addTesterToPlayConsole(data.email, pkg);
+}
+
+function handleWhatsAppIncoming(data) {
+  const entry = data.entry[0];
+  const changes = entry.changes[0];
+  const value = changes.value;
+  
+  if (value.messages) {
+    const message = value.messages[0];
+    const from = message.from; 
+
+    // A. Handle Interactive Responses (Buttons/Lists)
+    if (message.type === 'interactive') {
+      const interactive = message.interactive;
+      
+      // 1. Handle List Selections
+      if (interactive.type === 'list_reply') {
+        const selectionId = interactive.list_reply.id;
+        handleInteractiveSelection(from, selectionId);
+      }
+      // 2. Handle Button Clicks
+      else if (interactive.type === 'button_reply') {
+        const buttonId = interactive.button_reply.id;
+        handleInteractiveSelection(from, buttonId);
+      }
+      return;
+    }
+
+    // B. Handle Text Messages
+    const text = message.text ? message.text.body.toLowerCase().trim() : '';
+
+    // Main Menu Trigger
+    if (text === 'hi' || text === 'hello' || text === 'menu' || text === 'start') {
+      sendWhatsAppInteractiveMenu(from);
+    } 
+    // Intelligent Keyword Detection (The "AI" part)
+    else if (text.includes('link') || text.includes('download') || text.includes('install')) {
+      sendWhatsAppButtons(from, "🚀 *Get Started*", "Need the download link for our latest beta? Tap below!", [
+        { id: 'menu_games', title: '🎮 Browse Games' },
+        { id: 'help_install', title: '❓ How to Install' }
+      ]);
+    }
+    else if (text.includes('status') || text.includes('tester')) {
+      const stats = getStats();
+      const msg = `📊 *Beta Hub Status*\n\n• Current Testers: *${stats.currentTesters}*\n• Spots Remaining: *${stats.maxLimit - stats.currentTesters}*\n\nStatus: *Active & Recruiting*`;
+      callWhatsAppApi(from, msg);
+    }
+    else {
+      // Gentle fallback with interactive prompt
+      sendWhatsAppButtons(from, "🕷️ *WebSpider Studios*", "I didn't quite catch that. How can I help you today? 🕷️💧", [
+        { id: 'main_menu', title: '☰ Open Menu' },
+        { id: 'contact_dev', title: '👨‍💻 Contact Dev' }
+      ]);
+    }
+  }
+}
+
+/**
+ * Routes interactive IDs to specific actions
+ */
+function handleInteractiveSelection(from, id) {
+  switch (id) {
+    case 'main_menu':
+      sendWhatsAppInteractiveMenu(from);
+      break;
+    case 'menu_website':
+      callWhatsAppApi(from, "🌐 *WebSpider Studios — Official Website*\n\nExplore our legacy, our mission, and our upcoming AI-first projects here:\n\n👉 https://vr-webspider.github.io/\n\n_Reply 'Menu' to go back._");
+      break;
+    case 'menu_games':
+      const gameList = Object.keys(CONFIG.GAMES).map(g => `• *${g}*`).join('\n');
+      callWhatsAppApi(from, `🎮 *Active Beta Projects*\n\nWe are currently testing several titles. Our flagship is Aqua Sort:\n\n${gameList}\n\n👉 Jump in: ${CONFIG.OFFICIAL_WEBSITE}#games\n\n_Reply 'Menu' to go back._`);
+      break;
+    case 'menu_plan':
+      callWhatsAppApi(from, `🛡️ *The Beta Hub Testers Plan*\n\nOur goal is to reach 200 dedicated testers. As a tester, you get:\n\n✅ Early access to all builds\n✅ Direct reach to developers\n✅ Exclusive in-game rewards\n\n👉 Join here: ${CONFIG.OFFICIAL_WEBSITE}`);
+      break;
+    case 'menu_socials':
+      callWhatsAppApi(from, `📱 *Find us on Platforms*\n\n• *Play Store:* ${CONFIG.PLAY_STORE_URL}\n• *Instagram:* @WebSpider.VR\n• *YouTube:* WebSpider Studios`);
+      break;
+    case 'help_install':
+      callWhatsAppApi(from, "❓ *How to Install*\n\n1. Click the link we sent (Google Play).\n2. Tap 'Become a Tester'.\n3. Download the app directly from the Play Store!\n\n_Still stuck? Reply 'Dev' to talk to us._");
+      break;
+    case 'contact_dev':
+      callWhatsAppApi(from, "👨‍💻 *Direct Support*\n\nYou can reach our lead developer at webspiderstudios@gmail.com or wait for a manual response here. We usually reply within 24 hours!");
+      break;
+    default:
+      sendWhatsAppInteractiveMenu(from);
+  }
+}
+
+/* ─── EMAIL ENGINE ────────────────────── */
+
+function sendWelcomeEmail(email, name, downloadUrl, gameName) {
+  const firstName = name ? name.split(' ')[0] : 'Tester';
+  const subject = `🕷️ Welcome to the WebSpider Studios Beta Squad!`;
+  const gameTitle = gameName || 'our latest titles';
   
   const htmlBody = `
-    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; color: #334155;">
-      <h2 style="color: #0f172a;">Hi ${firstName}! 👋</h2>
-      <p>Welcome to the Aqua Sort Beta Squad! 🎮💧</p>
-      <p>Your application has been successfully processed. You are now officially on our tester list. Let's get you set up!</p>
-      
-      <div style="margin: 30px 0; padding: 24px; background: #f8fafc; border-radius: 12px; border-left: 5px solid #15d6c8;">
-        <h3 style="margin-top: 0; color: #0f172a; font-size: 18px;">1️⃣ Download the Game</h3>
-        <p style="margin-bottom: 20px;">Use the secure Google Play testing link below to opt-in to the beta and download the game to your Android device:</p>
-        <a href="${playStoreLink}" style="background: #15d6c8; color: #0f172a; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Download on Google Play</a>
-      </div>
+    <div style="background-color: ${CONFIG.BG_COLOR}; padding: 40px 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #ffffff;">
+      <div style="max-width: 600px; margin: 0 auto; background: #2d2e32; border-radius: 16px; overflow: hidden; border: 1px solid #3d3e42;">
+        <div style="background: ${CONFIG.ACCENT_COLOR}; padding: 40px; text-align: center;">
+          <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: 1px;">Hi, ${firstName}! 👋</h1>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">You're officially a Beta Tester for <strong>${gameTitle}</strong>.</p>
+        </div>
+        
+        <div style="padding: 40px;">
+          <p style="font-size: 16px; line-height: 1.8; color: #e0e0e0;">
+            We're thrilled to have you in the squad. Your mission is to help us break, test, and improve our latest creations. As a first reward, here is your early access link.
+          </p>
+          
+          <div style="margin: 35px 0; text-align: center;">
+            <a href="${downloadUrl}" style="display: inline-block; background: ${CONFIG.ACCENT_COLOR}; color: white; padding: 18px 36px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 10px 20px rgba(52, 168, 83, 0.3);">🚀 Download Beta App</a>
+          </div>
 
-      <div style="margin: 30px 0; padding: 24px; background: #f8fafc; border-radius: 12px; border-left: 5px solid #25D366;">
-        <h3 style="margin-top: 0; color: #0f172a; font-size: 18px;">2️⃣ Join the Community</h3>
-        <p style="margin-bottom: 20px;">Join our private Beta Testers WhatsApp group to share feedback, report bugs, and chat directly with the developer.</p>
-        <a href="${whatsappLink}" style="background: #25D366; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Join WhatsApp Group</a>
-      </div>
+          <p style="font-size: 13px; color: #888; text-align: center;">
+            <em>Note: If the link above doesn't work immediately, wait 5 minutes while we authorize your email in the Play Store Console.</em>
+          </p>
 
-      <p>In the meantime, warm up your puzzle-solving brain — the tubes won't sort themselves! 😄</p>
-      <br>
-      <p>With water-themed enthusiasm 💧,<br><strong>The WebSpider Studios Team</strong></p>
+          <hr style="border: none; border-top: 1px solid #3d3e42; margin: 40px 0;">
+          
+          <div style="text-align: center;">
+            <p style="font-size: 14px; color: #888;">Follow our journey</p>
+            <a href="${CONFIG.OFFICIAL_WEBSITE}" style="color: ${CONFIG.ACCENT_COLOR}; text-decoration: none; font-weight: bold;">Official Website</a>
+          </div>
+        </div>
+      </div>
+      <p style="text-align: center; color: #666; font-size: 12px; margin-top: 25px;">
+        © 2026 ${CONFIG.STUDIO_NAME} • Built with 💧 and Passion • India
+      </p>
     </div>
   `;
 
+  MailApp.sendEmail({
+    to: email,
+    subject: subject,
+    htmlBody: htmlBody
+  });
+}
+
+/* ─── WHATSAPP ENGINE ────────────────────── */
+
+function sendWhatsAppNotification(phone, name, downloadUrl) {
+  const message = `Hi ${name}! 🕷️\n\nWelcome to the WebSpider Studios Beta Squad! You're now authorized to download the build.`;
+  
+  sendWhatsAppButtons(phone, "🚀 Welcome!", message, [
+    { id: 'menu_games', title: '🎮 Download App' },
+    { id: 'help_install', title: '❓ Help Me' }
+  ]);
+}
+
+function sendWhatsAppInteractiveMenu(phone) {
+  const payload = {
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: phone.replace('+', ''),
+    type: "interactive",
+    interactive: {
+      type: "list",
+      header: { type: "text", text: "WebSpider Studios" },
+      body: { text: "🌟 *AI-First Game Studio* 🌟\n\nWelcome! I am your virtual concierge. How can I help you today?" },
+      footer: { text: "Select an option below 🕷️💧" },
+      action: {
+        button: "View Options",
+        sections: [
+          {
+            title: "Explore",
+            rows: [
+              { id: "menu_website", title: "🌐 Official Website", description: "Our mission & legacy" },
+              { id: "menu_games", title: "🎮 Current Games", description: "Active beta programs" },
+              { id: "menu_plan", title: "🛡️ Tester Plan", description: "Rewards & Roadmap" }
+            ]
+          },
+          {
+            title: "Support",
+            rows: [
+              { id: "menu_socials", title: "📱 Platforms & Socials", description: "Follow our journey" },
+              { id: "contact_dev", title: "👨‍💻 Contact Dev", description: "Direct support line" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+  callWhatsAppApiRaw(payload);
+}
+
+/**
+ * Sends a set of quick-reply buttons
+ */
+function sendWhatsAppButtons(phone, header, body, buttons) {
+  const payload = {
+    messaging_product: "whatsapp",
+    recipient_type: "individual",
+    to: phone.replace('+', ''),
+    type: "interactive",
+    interactive: {
+      type: "button",
+      header: { type: "text", text: header },
+      body: { text: body },
+      action: {
+        buttons: buttons.map(b => ({
+          type: "reply",
+          reply: { id: b.id, title: b.title }
+        }))
+      }
+    }
+  };
+
+  callWhatsAppApiRaw(payload);
+}
+
+function callWhatsAppApiRaw(payload) {
+  if (CONFIG.WHATSAPP_TOKEN === 'YOUR_META_ACCESS_TOKEN') return;
+
+  const url = `https://graph.facebook.com/v17.0/${CONFIG.WHATSAPP_PHONE_ID}/messages`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${CONFIG.WHATSAPP_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    payload: JSON.stringify(payload)
+  };
+
   try {
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
-      htmlBody: htmlBody
-    });
+    UrlFetchApp.fetch(url, options);
   } catch (e) {
-    console.log('Email send failed:', e.message);
+    Logger.log("WhatsApp API Error: " + e.message);
   }
+}
+
+function callWhatsAppApi(phone, text) {
+  if (CONFIG.WHATSAPP_TOKEN === 'YOUR_META_ACCESS_TOKEN') return;
+
+  const url = `https://graph.facebook.com/v17.0/${CONFIG.WHATSAPP_PHONE_ID}/messages`;
+  const payload = {
+    messaging_product: "whatsapp",
+    to: phone.replace('+', ''),
+    type: "text",
+    text: { body: text }
+  };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${CONFIG.WHATSAPP_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    payload: JSON.stringify(payload)
+  };
+
+  try {
+    UrlFetchApp.fetch(url, options);
+  } catch (e) {
+    Logger.log("WhatsApp API Error: " + e.message);
+  }
+}
+
+/* ─── GOOGLE PLAY AUTOMATION ENGINE ────────────────────── */
+
+function addTesterToPlayConsole(email, packageName) {
+  try {
+    if (CONFIG.PLAY_API.SERVICE_ACCOUNT_EMAIL.includes('REPLACE_')) return;
+
+    const token = getPlayAccessToken();
+    const pkg = packageName || CONFIG.PLAY_API.PACKAGE_NAME;
+    
+    // 1. Create a new Edit (session)
+    const editUrl = `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${packageName}/edits`;
+    const editResponse = UrlFetchApp.fetch(editUrl, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const editId = JSON.parse(editResponse.getContentText()).id;
+
+    // 2. Get current testers to avoid overwriting or to find the right list
+    const testersUrl = `${editUrl}/${editId}/testers/${CONFIG.PLAY_API.TRACK}`;
+    const testersResponse = UrlFetchApp.fetch(testersUrl, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const testersData = JSON.parse(testersResponse.getContentText());
+
+    // 3. Add the email (Handle list logic)
+    // Note: If using specific email groups, we modify the googleGroups or just the list
+    if (!testersData.googleEmails) testersData.googleEmails = [];
+    if (!testersData.googleEmails.includes(email)) {
+      testersData.googleEmails.push(email);
+    }
+
+    // 4. Update the testers for this edit
+    UrlFetchApp.fetch(testersUrl, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      payload: JSON.stringify(testersData)
+    });
+
+    // 5. Commit changes
+    UrlFetchApp.fetch(`${editUrl}/${editId}:commit`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    Logger.log(`Successfully added ${email} to ${CONFIG.PLAY_API.TRACK} testers.`);
+  } catch (err) {
+    Logger.log(`Play API Error: ${err.message}`);
+  }
+}
+
+/**
+ * Handles JWT Generation for Service Account Authentication
+ */
+function getPlayAccessToken() {
+  const serviceAccount = {
+    client_email: CONFIG.PLAY_API.SERVICE_ACCOUNT_EMAIL,
+    private_key: CONFIG.PLAY_API.PRIVATE_KEY
+  };
+
+  const header = JSON.stringify({ alg: "RS256", typ: "JWT" });
+  const now = Math.floor(Date.now() / 1000);
+  const claimSet = JSON.stringify({
+    iss: serviceAccount.client_email,
+    scope: "https://www.googleapis.com/auth/androidpublisher",
+    aud: "https://oauth2.googleapis.com/token",
+    exp: now + 3600,
+    iat: now
+  });
+
+  const encode = (str) => Utilities.base64EncodeWebSafe(str).replace(/=+$/, "");
+  const signatureInput = encode(header) + "." + encode(claimSet);
+  const signature = Utilities.computeRsaSha256Signature(signatureInput, serviceAccount.private_key);
+  const jwt = signatureInput + "." + encode(signature);
+
+  const response = UrlFetchApp.fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    payload: {
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion: jwt
+    }
+  });
+
+  return JSON.parse(response.getContentText()).access_token;
+}
+
+/* ─── UTILS ────────────────────── */
+
+/**
+ * Calculates real-time stats from the Google Sheet
+ */
+function getStats() {
+  try {
+    const ss = CONFIG.SPREADSHEET_ID ? SpreadsheetApp.openById(CONFIG.SPREADSHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
+    if (!sheet) return { currentTesters: 0 };
+    
+    const data = sheet.getDataRange().getValues();
+    if (data.length <= 1) return { currentTesters: 0 };
+    
+    // Column 3 (index 2) is Email as per appendRow logic
+    const emails = data.slice(1).map(row => row[2]).filter(e => e && e.includes('@'));
+    const uniqueEmails = [...new Set(emails)];
+    
+    return {
+      success: true,
+      currentTesters: uniqueEmails.length,
+      maxLimit: 100,
+      timestamp: new Date().toISOString()
+    };
+  } catch (err) {
+    return { success: false, error: err.message, currentTesters: 0 };
+  }
+}
+
+function createJsonResponse(data) {
+  const output = JSON.stringify(data);
+  return ContentService.createTextOutput(output).setMimeType(ContentService.MimeType.JSON);
 }
